@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/mockdata.js"></script>
+    <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const backgroundColor = document.getElementById("avatar");
+
+            const defaultItem = document.getElementById("orange");
+            const purpleItem = document.getElementById("purple");
+            const greenItem = document.getElementById("green");
+
+            if (defaultItem) defaultItem.classList.remove("xl:hidden");
+            if (defaultItem) defaultItem.classList.remove("hidden");
+            if (purpleItem) purpleItem.classList.add("xl:hidden");
+            if (purpleItem) purpleItem.classList.add("hidden");
+            if (greenItem) greenItem.classList.add("xl:hidden");
+            if (greenItem) greenItem.classList.add("hidden");
+
+            backgroundColor.classList.remove('bg-orange-300');
+            backgroundColor.classList.remove('bg-orange-400');
+            backgroundColor.classList.add('bg-orange-200');
+
+        });
+
+        function toggleItem(element) {
+            const defaultItem = document.getElementById("orange");
+            const purpleItem = document.getElementById("purple");
+            const greenItem = document.getElementById("green");
+
+            if (element.id === "btn_orange") {
+                defaultItem.classList.remove("xl:hidden");
+                defaultItem.classList.remove("hidden");
+                purpleItem.classList.add("xl:hidden");
+                purpleItem.classList.add("hidden");
+                greenItem.classList.add("xl:hidden");
+                greenItem.classList.add("hidden");
+                console.log("orange");
+            } else if (element.id === "btn_purple") {
+                defaultItem.classList.add("xl:hidden");
+                defaultItem.classList.add("hidden");
+                purpleItem.classList.remove("xl:hidden");
+                purpleItem.classList.remove("hidden");
+                greenItem.classList.add("xl:hidden");
+                greenItem.classList.add("hidden");
+                console.log("purple");
+            } else if (element.id === "btn_green") {
+                defaultItem.classList.add("xl:hidden");
+                defaultItem.classList.add("hidden");
+                purpleItem.classList.add("xl:hidden");
+                purpleItem.classList.add("hidden");
+                greenItem.classList.remove("xl:hidden");
+                greenItem.classList.remove("hidden");
+                console.log("green");
+            }
+        }
+
+        function toggleChangeColorItems(element) {
+            var lessSugar = document.getElementById("less_sugar");
+            var natural = document.getElementById("natural");
+            var energetic = document.getElementById("energetic");
+
+            var backgroundColorOrange = document.getElementById("avatar_orange");
+            var backgroundColorPurple = document.getElementById("avatar_purple");
+            var backgroundColorGreen = document.getElementById("avatar_green");
+
+            if (element.id === "less_sugar_orange" || element.id === "less_sugar_purple" || element.id === "less_sugar_green") {
+                if (element.id === "less_sugar_orange") {
+                    backgroundColorOrange.classList.remove('bg-orange-300');
+                    backgroundColorOrange.classList.remove('bg-orange-400');
+                    backgroundColorOrange.classList.add('bg-orange-200');
+                } else if (element.id === "less_sugar_purple") {
+                    backgroundColorPurple.classList.remove('bg-purple-300');
+                    backgroundColorPurple.classList.remove('bg-purple-400');
+                    backgroundColorPurple.classList.add('bg-purple-200');
+                } else if (element.id === "less_sugar_green") {
+                    backgroundColorGreen.classList.remove('bg-green-350');
+                    backgroundColorGreen.classList.remove('bg-green-450');
+                    backgroundColorGreen.classList.add('bg-green-50');
+                }
+
+            } else if (element.id === "natural_orange" || element.id === "natural_purple" || element.id === "natural_green") {
+                if (element.id == "natural_orange") {
+                    backgroundColorOrange.classList.remove('bg-orange-200');
+                    backgroundColorOrange.classList.remove('bg-orange-400');
+                    backgroundColorOrange.classList.add('bg-orange-300');
+                } else if (element.id == "natural_purple") {
+                    backgroundColorPurple.classList.remove('bg-purple-200');
+                    backgroundColorPurple.classList.remove('bg-purple-400');
+                    backgroundColorPurple.classList.add('bg-purple-300');
+                } else if (element.id == "natural_green") {
+                    backgroundColorGreen.classList.remove('bg-green-50');
+                    backgroundColorGreen.classList.remove('bg-green-450');
+                    backgroundColorGreen.classList.add('bg-green-350');
+                }
+            } else if (element.id === "energetic_orange" || element.id === "energetic_purple" || element.id === "energetic_green") {
+                if (element.id == "energetic_orange") {
+                    backgroundColorOrange.classList.remove('bg-orange-200');
+                    backgroundColorOrange.classList.remove('bg-orange-300');
+                    backgroundColorOrange.classList.add('bg-orange-400');
+                } else if (element.id == "energetic_purple") {
+                    backgroundColorPurple.classList.remove('bg-purple-200');
+                    backgroundColorPurple.classList.remove('bg-purple-300');
+                    backgroundColorPurple.classList.add('bg-purple-400');
+                } else if (element.id == "energetic_green") {
+                    backgroundColorGreen.classList.remove('bg-green-50');
+                    backgroundColorGreen.classList.remove('bg-green-350');
+                    backgroundColorGreen.classList.add('bg-green-450');
+                }
+            }
+        }
+
+        // Select item function
+        function selectItem(element) {
+            // Find all rectangles and remove selected class
+            document.querySelectorAll('.rectangle').forEach(rect => {
+                rect.classList.remove('bg-yellow-400'); // Remove the selection background color
+                rect.classList.add('bg-white'); // Reset to default background color
+            });
+            // Add the selected class to the clicked element
+            element.classList.remove('bg-white');
+            element.classList.add('bg-yellow-400');
+            console.log(rect);
+        }
+
+        // togle info
+        function toggleInfo() {
+            var infoDiv = document.getElementById("info");
+            var toggleText = document.getElementById("toggleText");
+
+
+            if (toggleText.innerHTML.trim() == 'Xem chi tiet') {
+                infoDiv.style.height = "350px";
+                toggleText.innerHTML = 'Thu Gon';
+            } else {
+                infoDiv.style.height = "150px";
+                toggleText.innerHTML = 'Xem chi tiet';
+            }
+
+        }
+
+        // mock data generated
+        document.addEventListener("DOMContentLoaded", () => {
+            const mockData = generateMockData(10);
+            const ratingList = document.getElementById("rating-section");
+
+            mockData.forEach(data => {
+                const rating = document.createElement("div");
+                rating.className = 'p-4 mb-2 border border-gray-200 rounded';
+                rating.innerHTML = `
+                    <p ${data.name}>
+                    <p ${data.date}>   
+                    <p ${data.comment}>
+                        
+                `;
+            })
+        })
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const carousel = document.getElementById("carousel");
+            let startX;
+            let isDown = false;
+
+            carousel.addEventListener('touchstart', (e) => {
+                isDown = true;
+                startX = e.touches[0].pageX;
+                carousel.classList.remove('transition-transform');
+
+                console.log("hello touch start")
+            }, { passive: true });
+
+            carousel.addEventListener('touchmove', (e) => {
+                if (!isDown) return;
+                const nextX = e.touches[0].pageX;
+                const distance = startX - nextX;
+                console.log("distance ne: ", distance);
+                if (Math.abs(distance) > 20) {
+                    // move slide
+                    moveSlide(distance > 0 ? 1 : -1);
+                    isDown = false;
+                }
+                console.log("hello touch move")
+            }, { passive: false });
+
+            carousel.addEventListener('touchend', () => {
+                isDown = false;
+                carousel.classList.add('transition-transform');
+            })
+
+            function moveSlide(direction) {
+                const slideWidth = carousel.querySelector('div').clientWidth;
+                const currentScroll = carousel.scrollLeft;
+                const newScroll = currentScroll + (direction * slideWidth);
+                carousel.scrollTo({ left: newScroll, behavior: 'smooth' });
+
+            }
+        })
+
+        const mockData = [
+            { name: "Alice", comment: "This is a comment.", date: "2024-09-01", rating: 4 },
+            { name: "Bob", comment: "Another comment.", date: "2024-09-02", rating: 3 },
+            { name: "Charlie", comment: "Yet another comment.", date: "2024-09-03", rating: 5 },
+            { name: "David", comment: "Comment again.", date: "2024-09-04", rating: 2 },
+            { name: "Eve", comment: "Comment here too.", date: "2024-09-05", rating: 4 },
+            { name: "Frank", comment: "And here.", date: "2024-09-06", rating: 5 },
+            { name: "Grace", comment: "More comments.", date: "2024-09-07", rating: 3 },
+            { name: "Hank", comment: "Keep commenting.", date: "2024-09-08", rating: 2 },
+            { name: "Ivy", comment: "Comments never end.", date: "2024-09-09", rating: 4 },
+            { name: "Jack", comment: "Last one, maybe?", date: "2024-09-10", rating: 5 }
+        ];
+
+
+
+
+        let currentPage = 0;
+        const recordsPerPage = 4;
+
+        function displayTable(page) {
+            const tbody = document.getElementById('table-body');
+            tbody.innerHTML = ''; // Clear the table body
+
+            // Calculate start and end index
+            const start = page * recordsPerPage;
+            const end = start + recordsPerPage;
+            const paginatedItems = mockData.slice(start, Math.min(end, mockData.length));
+
+            // Add the paginated items to the table
+            for (const [index, item] of paginatedItems.entries()) {
+                const tr = document.createElement('tr');
+                const isFirstItem = index === 0;
+                const isLastItem = index === paginatedItems.length - 1;
+
+                tr.classList.add('border', 'border-black', 'flex', 'flex-row', 'p-4', 'justify-between'); // Base border style for all rows
+                if (isFirstItem) tr.classList.add('rounded-t-lg');
+                if (isLastItem) tr.classList.add('rounded-b-lg');
+                // Function to generate stars based on rating
+                const generateStars = (rating) => {
+                    let starsHtml = '';
+                    for (let i = 0; i < rating; i++) {
+                        starsHtml += `<img src="../assets/Star 17.svg" class="absolute z-${40 - i * 10}" style="height: 100%; width: auto; left: ${i * 17}px;">`;
+                    }
+                    return `<div id="stars" class="flex relative w-[${17 * rating}px] h-[30px]">${starsHtml}</div>`;
+                };
+
+                tr.innerHTML = `
+                        <div class="flex flex-col space-y-1">
+                            <span class="font-bold">${item.name}</span>
+                            <span class="text-sm text-gray-600">${item.date}</span>
+                            <span class="">${item.comment}</span>
+                        </div>
+                        <div class="flex flex-row">
+                ${item.rating >= 1 && item.rating <= 5 ? generateStars(item.rating) : ''}
+            </div>
+                    
+                 
+                `;
+                tbody.appendChild(tr);
+            }
+
+
+            // Update page information
+            //document.getElementById('page-info').textContent = `Page ${page + 1} of ${Math.ceil(mockData.length / recordsPerPage)}`;
+            //document.getElementById('page-info').textContent = `${page + 1 == 1 ? <div class="flex flex-col"> <p class="underline">1</p> <p>2</p> <p>3</p> </div>: page + 1 == 2 ? <div class="flex flex-col"> <p>1</p> <p class="underline">2</p> <p>3</p> </div> : <div class="flex flex-col"> <p>1</p> <p>2</p> <p class="underline">3</p> </div> } of ${Math.ceil(mockData.length / recordsPerPage)}`;
+            // Calculate the total number of pages
+            const totalPages = Math.ceil(mockData.length / recordsPerPage);
+
+            // Decide which page numbers to underline
+            const getPageMarkup = (currentPage) => {
+                let pagesMarkup = '';
+                for (let i = 1; i <= totalPages; i++) {
+                    pagesMarkup += `<p class="pt-2 ml-2 font-bold ${currentPage === i ? 'underline' : ''}">${i}</p>`;
+                }
+                return `<div class="flex flex-row">${pagesMarkup}</div>`;
+            };
+
+            // Set the innerHTML of the page-info element
+            document.getElementById('page-info').innerHTML = `${getPageMarkup(page + 1)}`;
+
+        }
+
+        function changePage(dir) {
+            const newPage = currentPage + dir;
+            const totalPages = Math.ceil(mockData.length / recordsPerPage);
+
+            // Check page limits
+            if (newPage >= 0 && newPage < totalPages) {
+                currentPage = newPage;
+                displayTable(currentPage);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize the table with the first page
+            displayTable(0);
+        });
+
+
+
+    </script>
+
+    <style>
+        .dropdown-icon {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='gray'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.5rem center;
+            background-size: 1.5em 1.5em;
+        }
+
+        #carouselContainer {
+            overflow-x: scroll;
+            scroll-snap-type: x mandatory;
+            /* Enables snapping behavior */
+        }
+
+        #carousel>div {
+            scroll-snap-align: start;
+            /* Ensures each child snaps in place */
+            flex-shrink: 0;
+            /* Prevents flex items from shrinking */
+        }
+
+        .hover-shadow hover {
+            box-shadow: none;
+            /* Removes the shadow on hover */
+        }
+
+        .hover-shadow {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            /* Example shadow, adjust as needed */
+        }
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Paytone+One&display=swap"
+        rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <!-- Header Alert -->
+        <div
+            class="bg-purple-400 w-full h-16 block md:flex justify-center items-center text-center px-9 py-1 md:py-2 md:p-0">
+            <div class="text-white font-comfortaa text-base leading-6 font-bold">Giảm giá thật nhiều, quẩy thật vui. <a
+                    class="hover:underline" href="./register.html">Đăng ký ngay</a>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <header
+            class="sm:container xl:max-w-none py-4 flex justify-between xl:justify-around items-center xl:bg-orange-300 xl:dark:bg-purple-300">
+            <div class="hidden xl:block">
+                <div class="inline-block relative">
+                    <div class="flex space-x-4">
+                        <div class="relative">
+                            <button id="veYoButton"
+                                class="uppercase font-paytone font-normal leading-normal flex items-center text-[1.4375rem]">
+                                Về Yo!
+                                <svg id="veYoIcon" width="18" height="14" viewBox="0 0 18 14" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg" class="ml-1 transition-transform duration-300">
+                                    <path d="M9 13.5L0.339746 0.749998L17.6603 0.75L9 13.5Z" fill="#232323" />
+                                </svg>
+                            </button>
+                            <div id="veYoDropdown"
+                                class="absolute dropdown bg-yellow-400 w-56 rounded-standard border border-border shadow-br-black-lg hidden z-50">
+                                <a href="./characters.html"
+                                    class="block text-border font-paytone text-[1.4375rem] font-normal uppercase px-5 py-2.5">Các
+                                    nhân
+                                    vật</a>
+                                <a href="#"
+                                    class="block text-border font-paytone text-[1.4375rem] font-normal uppercase px-5 py-2.5">Câu
+                                    chuyện</a>
+                                <a href="./faq.html"
+                                    class="block text-border font-paytone text-[1.4375rem] font-normal uppercase px-5 py-2.5">FAQ</a>
+                                <a href="./partner.html"
+                                    class="block text-border font-paytone text-[1.4375rem] font-normal uppercase px-5 py-2.5">Đối
+                                    tác</a>
+                                <a href="./contact.html"
+                                    class="block text-border font-paytone text-[1.4375rem] font-normal uppercase px-5 py-2.5">Liên
+                                    hệ</a>
+                            </div>
+                        </div>
+
+                        <div class="relative pl-12">
+                            <button id="sodaYoButton"
+                                class="uppercase font-paytone font-normal leading-normal flex items-center text-[1.4375rem]">
+                                Soda Yo!
+                                <svg id="sodaYoIcon" width="18" height="14" viewBox="0 0 18 14" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg" class="ml-1 transition-transform duration-300">
+                                    <path d="M9 13.5L0.339746 0.749998L17.6603 0.75L9 13.5Z" fill="#232323" />
+                                </svg>
+                            </button>
+                            <div id="sodaYoDropdown"
+                                class="absolute dropdown bg-yellow-400 w-56 rounded-standard border border-border shadow-br-black-lg hidden z-50">
+                                <a href="./product.html"
+                                    class="block text-border font-paytone text-[1.4375rem] font-normal uppercase px-5 py-2.5">Sản
+                                    phẩm</a>
+                                <a href="./blog.html"
+                                    class="block text-border font-paytone text-[1.4375rem] font-normal uppercase px-5 py-2.5">Công
+                                    thức</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile menu button -->
+            <div class="xl:hidden">
+                <button type="button" class="bg-neutral-white rounded-md p-2 inline-flex items-center justify-center"
+                    aria-expanded="false" id="mobile-menu-button">
+                    <img loading="lazy" src="../assets/vector.svg" alt="vector menu" />
+                </button>
+            </div>
+            <div id="mobile-menu" class="xl:hidden absolute top-16 left-0 w-full bg-orange-200 shadow-lg z-50 hidden">
+                <div class="px-4 py-6 space-y-6">
+                    <div class="relative">
+                        <button id="mobile-veYoButton"
+                            class="uppercase font-paytone font-normal leading-normal flex items-center text-[1.4375rem] w-fit text-left bg-orange-300 p-2 rounded-standard">
+                            Về Yo!
+                            <svg id="mobile-veYoIcon" width="18" height="14" viewBox="0 0 18 14" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" class="ml-1 transition-transform duration-300">
+                                <path d="M9 13.5L0.339746 0.749998L17.6603 0.75L9 13.5Z" fill="#232323" />
+                            </svg>
+                        </button>
+                        <div id="mobile-veYoDropdown" class="mt-3 space-y-3 hidden">
+                            <a href="#"
+                                class="block text-border font-paytone text-[1.4375rem] font-normal uppercase px-5 py-2.5">Các
+                                nhân vật</a>
+                            <a href="#"
+                                class="block text-border font-paytone text-[1.4375rem] font-normal uppercase px-5 py-2.5">Câu
+                                chuyện</a>
+                            <a href="#"
+                                class="block text-border font-paytone text-[1.4375rem] font-normal uppercase px-5 py-2.5">FAQ</a>
+                            <a href="#"
+                                class="block text-border font-paytone text-[1.4375rem] font-normal uppercase px-5 py-2.5">Đối
+                                tác</a>
+                            <a href="#"
+                                class="block text-border font-paytone text-[1.4375rem] font-normal uppercase px-5 py-2.5">Liên
+                                hệ</a>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <button id="mobile-sodaYoButton"
+                            class="uppercase font-paytone font-normal leading-normal flex items-center text-[1.4375rem] text-left bg-orange-300 p-2 rounded-standard">
+                            Soda Yo!
+                            <svg id="mobile-sodaYoIcon" width="18" height="14" viewBox="0 0 18 14" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" class="ml-1 transition-transform duration-300">
+                                <path d="M9 13.5L0.339746 0.749998L17.6603 0.75L9 13.5Z" fill="#232323" />
+                            </svg>
+                        </button>
+                        <div id="mobile-sodaYoDropdown" class="mt-3 space-y-3 hidden">
+                            <a href="../pages/product.html"
+                                class="block text-border font-paytone text-[1.4375rem] font-normal uppercase px-5 py-2.5">Sản
+                                phẩm</a>
+                            <a href="../pages/blog.html"
+                                class="block text-border font-paytone text-[1.4375rem] font-normal uppercase px-5 py-2.5">Công
+                                thức</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="#" className="">
+                <img className="object-cover" src="../assets/images/logo.png" alt="logo" loading="lazy" width="120"
+                    height="65" />
+            </a>
+
+            <div class="flex space-x-5 items-center">
+                <img src="../assets/images/icon/search.png" alt="" class="hidden xl:inline" />
+                <a href="./account_information.html">
+                    <img src="../assets/images/icon/user.png" alt="" class="hidden xl:inline" />
+                </a>
+
+                <button id="cart-button">
+                    <img loading="lazy" src="../assets/shopping-bag.svg" alt="shopping-bag" />
+                </button>
+
+                <div id="cart-modal"
+                    class="fixed z-50 gap-4 p-6 shadow-lg transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-500 inset-y-0 right-0 h-full w-3/4 border-l data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-sm dark:bg-purple-100 bg-orange-100 xl:h-screen flex flex-col justify-between">
+                    <div class="flex flex-col">
+                        <div class="flex justify-between">
+                            <h2 class="text-orange-300 uppercase text-4xl/normal font-bold font-paytone"
+                                style="text-shadow: 4px 4px 0 #232323;">Giỏ hàng</h2>
+                            <button class="font-paytone -translate-y-6" id="close-cart-modal">x</button>
+                        </div>
+                        <div class="flex xl:gap-5 gap-3 mt-5">
+                            <img src="../assets/images/orange/orange-low.png" alt=""
+                                class="w-[6rem] h-[9rem] p-0.5 xl:w-[10rem] xl:h-[14rem] bg-orange-200 xl:px-[1.5rem] xl:py-[1rem] border-[0.125rem] border-solid border-neutral-black rounded-[0.9375rem] shadow-button object-contain shadow-br-black-md">
+                            <div class="flex flex-col">
+                                <p
+                                    class="uppercase text-neutral-black text-xl/normal xl:text-[1.875rem]/normal font-normal font-paytone">
+                                    Soda Yo! <span>Vị Cam</span></p>
+                                <p
+                                    class="xl:pt-2 uppercase text-neutral-black text-xl/normal xl:text-[1.4375rem]/normal font-paytone">
+                                    15,000 đ</p>
+                                <div class="flex flex-row justify-between items-center">
+                                    <button
+                                        class="flex items-center justify-between rounded-[0.9375rem] border-[0.125rem] border-neutral-black border-solid px-5 py-[0.625rem] uppercase text-[1.4375rem]/normal font-normal placeholder:text-neutral-black focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1 xl:hover:shadow-[inset_0_0_6px_rgba(0,0,0,0.3)] transition-shadow duration-500 shadow-br-black-md my-1 xl:my-3 w-[5rem] h-[2.5rem] xl:w-[6rem] xl:h-[3rem] bg-white">
+                                        <span style="pointer-events: none;">1</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-chevron-down h-6 w-6" aria-hidden="true">
+                                            <path d="m6 9 6 6 6-6"></path>
+                                        </svg>
+                                    </button>
+                                    <button
+                                        class="ease-in-out xl:hover:shadow-[inset_0_0_6px_rgba(0,0,0,0.3)] xl:hover:transition-shadow xl:hover:duration-5000 inline-flex items-center justify-center whitespace-nowrap rounded-[0.9375rem] text-sm font-medium transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 text-primary-foreground hover:bg-primary/90 bg-neutral-white ml-2 p-[0.375rem] border-2 border-solid border-neutral-black shadow-br-black-md">
+                                        <img src="../assets/images/trash.svg" alt=""
+                                            class="w-6 h-6 xl:w-8 xl:h-8 cursor-pointer">
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col h-fit">
+                        <div>
+                            <p
+                                class="text-neutral-black font-normal text-xl/normal xl:text-[1.875rem]/normal uppercase font-paytone">
+                                Tổng cộng</p>
+                            <p
+                                class="text-neutral-black font-normal text-[1.5rem]/normal xl:text-[2.5rem]/normal uppercase font-paytone">
+                                30,000 đ</p>
+                            <button
+                                class="text-border bg-neutral-white text-2xl font-paytone uppercase font-normal leading-normal border-2 border-border rounded-[0.9375rem] py-1 shadow-br-black-md hover:transition hover:duration-1000 hover:ease-in-out hover:shadow-inner-black-sm w-full">tiếp
+                                tục mua sắm</button>
+                            <p class="my-5 font-comfortaa text-base/[1.5625rem] font-bold mt-4">Tiền vận chuyển sẽ được
+                                tính trong quá trình thanh toán</p>
+                            <button
+                                class="text-border bg-yellow-400 text-2xl font-paytone uppercase font-normal leading-normal border-2 border-border rounded-[0.9375rem] py-1 shadow-br-black-md hover:transition hover:duration-1000 hover:ease-in-out hover:shadow-inner-black-sm w-full">Thanh
+                                toán</button>
+                        </div>
+                    </div>
+                </div>
+
+                <input type="checkbox" id="dark-mode-toggle" class="hidden">
+                <label for="dark-mode-toggle" class="cursor-pointer hidden xl:inline">
+                    <div
+                        class="w-12 h-7 bg-yellow-300 rounded-full flex items-center transition duration-300 ease-in-out dark:bg-purple-300 border-2 border-border">
+                        <div
+                            class="w-5 h-5 bg-white rounded-full shadow transform transition duration-300 ease-in-out translate-x-0 dark:translate-x-5 mx-1 my-12">
+                        </div>
+                    </div>
+                </label>
+            </div>
+        </header>
+
+        <div class="bg-orange-100 pt-2 flex flex-col">
+            <div class="xl:flex xl:flex-row xl:ml-[15.0625rem] xl:mr-[15.0625rem] flex flex-col xl:mt-[5rem]">
+                <div id="orange" class="xl:flex xl:flex-row flex flex-col ">
+                    <div class="relative mb-5">
+                        <!-- Main Rectangle -->
+                        <div id="avatar_orange"
+                            class="xl:min-w-[37rem] xl:min-h-[43rem] xl:ml-0 xl:mr-0 ml-2 mr-2 bg-orange-200 flex justify-center items-center text-black text-xl font-bold rounded-standard border-2 border-black font-comfortaa shadow-br-black-sm "
+                            style="z-index: 1;">
+                            <img src="../assets/cam.png" alt="Tai khoan va bao mat" style="height: 100%; width: auto;">
+                        </div>
+                    </div>
+
+                    <div class="xl:flex xl:flex-col xl:ml-3 flex flex-row ml-3">
+                        <div id="categoryr" class="mb-5">
+                            <!-- Main Rectangle -->
+                            <div id="less_sugar_orange" onclick="toggleChangeColorItems(this);"
+                                class="rectangle xl:min-w-[13.375rem] xl:min-h-[13.375rem] xl:p-0 xl:mr-0 p-2 mr-4 bg-orange-200 flex justify-center items-center text-black xl:text-3xl font-bold rounded-standard border-2 border-black font-paytone uppercase shadow-br-black-sm hover:shadow-none"
+                                style="z-index: 1;">
+                                <p>It Duong</p>
+                            </div>
+                        </div>
+
+                        <div id="categoryr" class="mb-5">
+
+                            <div id="natural_orange" onclick="toggleChangeColorItems(this);"
+                                class=" rectangle xl:min-w-[13.375rem] xl:min-h-[13.375rem] xl:p-0 xl:mr-0 p-2 mr-4 bg-orange-300 flex justify-center items-center text-black xl:text-3xl font-bold rounded-standard border-2 border-black font-paytone uppercase shadow-br-black-sm hover:shadow-none"
+                                style="z-index: 1;">
+                                <p>Tu Nhien</p>
+                            </div>
+                        </div>
+
+                        <div id="categoryr" class="mb-5">
+                            <div id="energetic_orange" onclick="toggleChangeColorItems(this);"
+                                class=" rectangle xl:min-w-[13.375rem] xl:min-h-[13.375rem] xl:p-0 xl:mr-0 p-2 bg-orange-400 flex justify-center items-center text-black xl:text-3xl font-bold rounded-standard border-2 border-black font-paytone teauppercase shadow-br-black-sm hover:shadow-none"
+                                style="z-index: 1;">
+                                <p>Nang Dong</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- tim ne -->
+                <div id="purple" class="xl:flex xl:flex-row flex flex-col">
+                    <div class="relative mb-5">
+                        <!-- Main Rectangle -->
+                        <div id="avatar_purple"
+                            class="xl:min-w-[37rem] xl:min-h-[43rem] xl:ml-0 xl:mr-0 ml-2 mr-2 bg-purple-300 flex justify-center items-center text-black text-xl font-bold rounded-standard border-2 border-black font-comfortaa shadow-br-black-sm "
+                            style="z-index: 1;">
+                            <img src="../assets/tim.png" alt="Tai khoan va bao mat" style="height: 100%; width: auto;">
+                        </div>
+                    </div>
+
+                    <div class="xl:flex xl:flex-col xl:ml-3 flex flex-row ml-3">
+                        <div id="categoryr" class="mb-5">
+                            <!-- Main Rectangle -->
+                            <div id="less_sugar_purple" onclick="toggleChangeColorItems(this);"
+                                class="rectangle xl:min-w-[13.375rem] xl:min-h-[13.375rem] xl:p-0 xl:mr-0 p-2 mr-4 bg-purple-200 flex justify-center items-center text-black xl:text-3xl font-bold rounded-standard border-2 border-black font-paytone uppercase shadow-br-black-sm hover:shadow-none"
+                                style="z-index: 1;">
+                                <p>It Duong</p>
+                            </div>
+                        </div>
+
+                        <div id="categoryr" class="mb-5">
+
+                            <div id="natural_purple" onclick="toggleChangeColorItems(this);"
+                                class=" rectangle xl:min-w-[13.375rem] xl:min-h-[13.375rem] xl:p-0 xl:mr-0 p-2 mr-4 bg-purple-300 flex justify-center items-center text-black xl:text-3xl font-bold rounded-standard border-2 border-black font-paytone uppercase shadow-br-black-sm hover:shadow-none"
+                                style="z-index: 1;">
+                                <p>Tu Nhien</p>
+                            </div>
+                        </div>
+
+                        <div id="categoryr" class="mb-5">
+                            <div id="energetic_purple" onclick="toggleChangeColorItems(this);"
+                                class=" rectangle xl:min-w-[13.375rem] xl:min-h-[13.375rem] xl:p-0 xl:mr-0 p-2 bg-purple-400 flex justify-center items-center text-black xl:text-3xl font-bold rounded-standard border-2 border-black font-paytone teauppercase shadow-br-black-sm hover:shadow-none"
+                                style="z-index: 1;">
+                                <p class="">Nang Dong</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="green" class="xl:flex xl:flex-row flex flex-col">
+                    <div class="relative mb-5">
+                        <!-- Main Rectangle -->
+                        <div id="avatar_green"
+                            class="xl:min-w-[37rem] xl:min-h-[43rem] xl:ml-0 xl:mr-0 ml-2 mr-2 bg-green-50 flex justify-center items-center text-black text-xl font-bold rounded-standard border-2 border-black font-comfortaa shadow-br-black-sm "
+                            style="z-index: 1;">
+                            <img src="../assets/xanh.png" alt="Tai khoan va bao mat" style="height: 100%; width: auto;">
+                        </div>
+                    </div>
+
+                    <div class="xl:flex xl:flex-col xl:ml-3 flex flex-row ml-3">
+                        <div id="categoryr" class="mb-5">
+                            <!-- Main Rectangle -->
+                            <div id="less_sugar_green" onclick="toggleChangeColorItems(this);"
+                                class=" rectangle xl:min-w-[13.375rem] xl:min-h-[13.375rem] xl:p-0 xl:mr-0 p-2 mr-4 bg-green-50 flex justify-center items-center text-black xl:text-3xl font-bold rounded-standard border-2 border-black font-paytone uppercase shadow-br-black-sm hover:shadow-none"
+                                style="z-index: 1;">
+                                <p>It Duong</p>
+                            </div>
+                        </div>
+
+                        <div id="categoryr" class="mb-5">
+
+                            <div id="natural_green" onclick="toggleChangeColorItems(this);"
+                                class=" rectangle xl:min-w-[13.375rem] xl:min-h-[13.375rem] xl:p-0 xl:mr-0 p-2 mr-4 bg-green-350 flex justify-center items-center text-black xl:text-3xl font-bold rounded-standard border-2 border-black font-paytone uppercase shadow-br-black-sm hover:shadow-none"
+                                style="z-index: 1;">
+                                <p>Tu Nhien</p>
+                            </div>
+                        </div>
+
+                        <div id="categoryr" class="mb-5">
+                            <div id="energetic_green" onclick="toggleChangeColorItems(this);"
+                                class=" rectangle xl:min-w-[13.375rem] xl:min-h-[13.375rem] xl:p-0 xl:mr-0 p-2 mr-2 bg-green-450 flex justify-center items-center text-black xl:text-3xl font-bold rounded-standard border-2 border-black font-paytone uppercase shadow-br-black-sm hover:shadow-none"
+                                style="z-index: 1;">
+                                <p class="">Nang Dong</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="order-section" class="ml-8 ">
+                    <div class="font-paytone mb-3">
+                        <p class="text-4xl">Yo! Soda Vị Cam Lon Thấp.</p>
+                    </div>
+
+                    <div id="star_price" class="flex flex-row">
+                        <div id="stars" class="flex relative w-[100px]  h-[30px] mr-2 mb-3">
+                            <img src="../assets/Star 17.svg" class="absolute z-40" alt="Tai khoan va bao mat"
+                                style="height: 100%; width: auto;">
+                            <img src="../assets/Star 18.svg" class="absolute ml-[17px] z-30" alt="Tai khoan va bao mat"
+                                style="height: 100%; width: auto;">
+                            <img src="../assets/Star 19.svg" class="absolute ml-[34px] z-20" alt="Tai khoan va bao mat"
+                                style="height: 100%; width: auto;">
+                            <img src="../assets/Star 20.svg" class="absolute ml-[51px] z-10" alt="Tai khoan va bao mat"
+                                style="height: 100%; width: auto;">
+                            <img src="../assets/Star 21.svg" class="absolute ml-[68px] z-0" alt="Tai khoan va bao mat"
+                                style="height: 100%; width: auto;">
+                        </div>
+
+                        <div id="price" class="font-paytone">
+                            <p>15,000 đ</p>
+                        </div>
+
+                    </div>
+
+                    <div class="font-comfortaa">
+                        <p class="mb-2">Chon vi ma ban muon:</p>
+                        <div class="flex flex-row">
+                            <button id="btn_orange" onclick="toggleItem(this)"
+                                class="h-10 w-10 rounded-full bg-orange-300 text-white flex items-center justify-center shadow-lg focus:outline-none focus:ring focus:ring-orange-500  mr-4">
+                            </button>
+                            <button id="btn_purple" onclick="toggleItem(this)"
+                                class="h-10 w-10 rounded-full bg-purple-250 text-white flex items-center justify-center shadow-lg focus:outline-none focus:ring focus:ring-purple-500 mr-4"></button>
+
+                            </button>
+                            <button id="btn_green" onclick="toggleItem(this)"
+                                class="h-10 w-10 rounded-full bg-green-50 text-white flex items-center justify-center shadow-lg focus:outline-none focus:ring focus:ring-green-500 mr-4"></button>
+
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col justify-between mt-3">
+                        <div class="flex flex-row">
+                            <div class="mb-4">
+                                <label for="product-type" class="block text-gray-700 text-sm font-bold mb-2">Chon san
+                                    pham:</label>
+                                <select id="product-type"
+                                    class=" block appearance-none w-full bg-gray-200 border-2 border-black text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 rounded-standard dropdown-icon ">
+
+                                    <option>Product 1</option>
+                                    <option>Product 2</option>
+                                    <option>Product 3</option>
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-row">
+                            <div class="mb-4">
+                                <label for="quantity" class="block text-gray-700 text-sm font-bold mb-2">So
+                                    Luong</label>
+                                <select id="quantity"
+                                    class="block appearance-none w-full bg-gray-200 border-2 border-black text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 rounded-standard dropdown-icon">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div id="general-information" class="xl:mr-0 mr-3">
+                        <div id="info" style="height: 150px; overflow: hidden; transition: height 0.3s ease;">
+                            <span class="font-bold font-comfortaa">Thong tin chung:</span>
+                            <span class="font-light font-comfortaa">Nước soda Yo! vị cam là sự pha trộn giàu vitamin C
+                                của
+                                các
+                                thành phần tự nhiên như nước ép quýt và quả quýt hòa quyện với một chút nước chanh để
+                                tạo ra
+                                một
+                                hương vị cam tươi mới đầy hứng khởi trên nền của loại nước có ga.</span>
+                            <p>
+                                <span class="font-bold font-comfortaa">Thành phần:</span>
+                                <span class="font-light font-comfortaa"> Nước có ga, Nước chanh, Nước ép cam, Nước ép
+                                    quýt,
+                                    Siro
+                                    củ sắn, Quả anh đào, Muối hồng Himalaya.</span>
+                            </p>
+                            <p class="font-light font-comfortaa">
+                                <span>asdfasdfasdfasdfasdfasdfasdasdfasdfsdfasdf </span>
+                                <span>asdfasdfasdfasdfasdfasdfasdasdfasdfsdfasdf </span>
+                                <span>asdfasdfasdfasdfasdfasdfasdasdfasdfsdfasdf </span>
+                                <span>asdfasdfasdfasdfasdfasdfasdasdfasdfsdfasdf </span>
+                            </p>
+                        </div>
+
+                        <p id="toggleText" class="font-bold font-comfortaa underline cursor-pointer"
+                            onclick="toggleInfo()">
+                            Xem chi tiet</p>
+                    </div>
+
+                    <div class="relative mt-5">
+                        <!-- Shadow Rectangle -->
+                        <div class="absolute w-[250px] h-[38px] bg-black left-[3px] top-[3px] rounded-standard"
+                            style="z-index: -1;"></div>
+
+                        <!-- Main Rectangle -->
+                        <div id="rectangle"
+                            class=" rectangle w-[250px] h-[38px] bg-yellow-400 text-black text-xl font-bold rounded-standard border-2 border-black font-comfortaa pl-4 pt-1"
+                            style="z-index: 1;">
+                            Them vao gio hang
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="rating-section" class="rating flex flex-col">
+                <div class="xl:flex xl:flex-row xl:ml-[15.0625rem] xl:mr-[15.0625rem] flex flex-col justify-between">
+                    <p class="mt-5 ml-7 font-paytone font-bold text-5xl mb-6">Danh gia tu khach hang</p>
+                    <div class="relative mt-5">
+
+                        <!-- Main Rectangle -->
+                        <div id="rectangle"
+                            class=" rectangle w-[132px] h-[32px] ml-7 bg-yellow-400 text-black font-bold rounded-standard border-2 border-black font-paytone pl-3 text-xl shadow-br-black-sm "
+                            style="z-index: 1;">
+                            Binh Luan
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col  items-center xl:h-[40.5rem] xl:mt-0 mt-5">
+                    <div id="table-container">
+                        <table class="rounded-t-lg rounded-b-lg  shadow-br-black-sm xl:w-[42.93rem]">
+
+                            <tbody id="table-body">
+                                <!-- Rows will be added here dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="pagination" class="flex flex-row">
+                        <button onclick="changePage(-2)"><img class="w-6 h-6 pt-2" src="../assets/Double Left.png"
+                                alt="abc"></button>
+                        <button onclick="changePage(-1)"><img class="w-6 h-6 pt-2" src="../assets/Back.png"
+                                alt="abc"></button>
+                        <span id="page-info"></span>
+                        <button onclick="changePage(1)"><img class="w-6 h-6 pt-2" src="../assets/Forward.png"
+                                alt="abc"></button>
+                        <button onclick="changePage(2)"><img class="w-6 h-6 pt-2" src="../assets/Double Right.png"
+                                alt="abc"></button>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="flex justify-center items-center mb-[2.71875rem]">
+                    <p class="font-paytone font-bold text-3xl">Co the ban cung thich</p>
+                </div>
+                <div class="relative xl:container">
+                    <div class="xl:flex xl:flex-row xl:ml-[15.0625rem] xl:mr-[15.0625rem]">
+                        <!-- Slide 1 -->
+                        <div class="flex-none max-w-2xl mr-1 ml-3 mb-16">
+                            <div class="relative mb-5">
+                                <div
+                                    class="rectangle xl:min-w-[460px] xl:min-h-[600px] max-w-[325px] min-h-[450px] container bg-purple-200 flex flex-col text-black text-xl font-bold rounded-standard border-2 border-black z-[2] shadow-br-black-sm">
+                                    <img src="../assets/cam.png" alt="Tai khoan va bao mat"
+                                        class="h-auto w-full max-h-full mx-auto my-4 xl:mt-28 xl:mb-24 mt-24 mb-16" />
+
+                                    <div class=" relative flex justify-between items-center px-4 w-full h-12">
+                                        <div class="relative w-[170px] h-[40px]">
+                                            <!-- Shadow Rectangle for detail button -->
+                                            <div class="absolute w-[150px] h-[40px] bg-black left-1 top-1 rounded-lg"
+                                                style="z-index: 2;"></div>
+
+                                            <!-- Main Rectangle for detail button -->
+                                            <div class=" absolute rectangle w-[150px] h-[40px] bg-yellow-400 text-black font-bold rounded-lg border-2 border-black text-sm pl-3 pt-1 leading-loose"
+                                                style="z-index: 3;">
+                                                Chi Tiet San Pham
+                                            </div>
+                                        </div>
+
+                                        <!-- Adjusted parent div for right-end alignment using flex and space-between -->
+                                        <div class="relative h-12 w-12 ">
+                                            <!-- Shadow Button: placed behind with a lower z-index -->
+                                            <div class="absolute bg-black rounded-full h-12 w-12 left-1 top-1 z-[1]">
+                                            </div>
+
+                                            <!-- Main Button: Visible and interactive -->
+                                            <button
+                                                class="relative bg-yellow-400 text-black font-bold rounded-full h-12 w-12 flex items-center justify-center shadow-lg focus:outline-none z-[2]">
+                                                +
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="w-full h-5 flex flex-col justify-center items-center pt-7">
+                                <p class="font-paytone font-bold text-xl">Yo! Soda Vị Nho </p>
+                                <p class="font-paytone font-bold text-xl">Lon Thap</p>
+                                <p class="font-paytone font-bold text-xl">15,000 VND</p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2 -->
+                        <div class="flex-none max-w-2xl mr-1 ml-3 mb-16">
+                            <div class="relative mb-5">
+
+                                <div
+                                    class="rectangle relative xl:min-w-[460px] xl:min-h-[600px] max-w-[325px] min-h-[450px] container bg-purple-100 flex flex-col text-black text-xl font-bold rounded-standard border-2 border-black z-[2] shadow-br-black-sm">
+                                    <img src="../assets/cam.png" alt="Tai khoan va bao mat"
+                                        class="h-auto w-auto max-w-full max-h-full mx-auto my-4 xl:mt-28 xl:mb-24 mt-24 mb-16 " />
+                                    <div class="absolute xl:left-[-50px] xl:top-[-40px] left-[-35px] top-[-35px]">
+                                        <svg width="153" height="158" viewBox="0 0 153 158" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M83.1627 109.86L82.5289 108.758L81.8709 109.846L65.0681 137.625L58.8134 108.128L58.6144 107.189L57.7517 107.609L24.0331 124.005L45.605 89.107L46.2545 88.0564L45.0227 87.9647L3.28257 84.8588L45.0252 65.274L45.8622 64.8813L45.3053 64.1433L25.5135 37.9148L61.3403 38.754L62.0443 38.7705L62.1051 38.069L65.161 2.80579L82.1576 38.3737L82.5471 39.1887L83.2766 38.656L115.227 15.3273L107.379 49.2334L107.149 50.2297L108.168 50.1502L147.874 47.0541L116.891 69.549L115.913 70.2589L116.983 70.8201L138.07 81.8802L118.231 88.881L117.331 89.1986L117.852 89.998L136.708 118.899L104.452 105.151L103.439 104.719L103.408 105.82L102.364 143.24L83.1627 109.86Z"
+                                                fill="#FFDA28" stroke="#232323" stroke-width="1.5" />
+                                            <path
+                                                d="M62.8088 67.2498H58.3238V55.3818H63.171C65.0685 55.3818 66.46 55.6463 67.3455 56.1753C68.231 56.6928 68.6738 57.4116 68.6738 58.3316C68.6738 59.5276 68.047 60.3498 66.7935 60.7983C68.4035 61.1088 69.2085 62.0576 69.2085 63.6446C69.2085 64.8636 68.6508 65.7721 67.5353 66.3701C66.4313 66.9566 64.8558 67.2498 62.8088 67.2498ZM62.1705 60.0738H63.5333C63.9933 60.0738 64.367 59.9703 64.6545 59.7633C64.942 59.5563 65.0858 59.2803 65.0858 58.9353C65.0858 58.1418 64.5453 57.7451 63.4643 57.7451H62.1705V60.0738ZM63.6368 64.8176C64.2118 64.8176 64.6545 64.7026 64.965 64.4726C65.2755 64.2426 65.4308 63.9206 65.4308 63.5066C65.4308 63.0581 65.2755 62.7131 64.965 62.4716C64.6545 62.2186 64.2118 62.0921 63.6368 62.0921H62.1533V64.8176H63.6368ZM69.7077 67.2498L72.9852 55.3818H78.5742L82.0069 67.2498H77.7807L77.3322 64.9728H74.2617L73.7614 67.2498H69.7077ZM74.6239 62.8511H76.9182L75.7969 57.6588L74.6239 62.8511ZM74.7274 54.6056L73.6752 52.7598L78.7294 49.2236L80.4717 52.3113L74.7274 54.6056ZM82.9353 67.2498V55.3818H86.3853L91.0428 61.6781V55.3818H94.2168V67.2498H90.7668L86.1093 61.2123V67.2498H82.9353ZM63.999 91.5258C62.757 91.5258 61.6703 91.2786 60.7388 90.7841C59.8188 90.2781 59.1 89.5708 58.5825 88.6623C58.0765 87.7538 57.8235 86.6958 57.8235 85.4883C57.8235 84.2463 58.088 83.1481 58.617 82.1936C59.1575 81.2391 59.8935 80.4916 60.825 79.9511C61.768 79.3991 62.849 79.1231 64.068 79.1231C65.425 79.1231 66.4888 79.3876 67.2593 79.9166L66.7935 82.6593C66.46 82.4983 66.1093 82.3833 65.7413 82.3143C65.3848 82.2338 65.0455 82.1936 64.7235 82.1936C63.7805 82.1936 63.0388 82.4753 62.4983 83.0388C61.9578 83.6023 61.6875 84.3843 61.6875 85.3848C61.6875 86.3278 61.9463 87.0696 62.4638 87.6101C62.9928 88.1391 63.723 88.4036 64.6545 88.4036C65.0225 88.4036 65.356 88.3691 65.655 88.3001C65.9655 88.2311 66.345 88.1046 66.7935 87.9206L67.2765 90.6461C66.276 91.2326 65.1835 91.5258 63.999 91.5258ZM68.5154 91.2498V79.3818H72.3967V83.8496H76.0709V79.3818H79.9694V91.2498H76.0709V86.5751H72.3967V91.2498H68.5154ZM80.9943 91.2498L84.2718 79.3818H89.8608L93.2935 91.2498H89.0673L88.6188 88.9728H85.5483L85.048 91.2498H80.9943ZM85.9105 86.8511H88.2048L87.0835 81.6588L85.9105 86.8511ZM87.1525 95.7003C86.6235 95.7003 86.1693 95.5278 85.7898 95.1828C85.4103 94.8493 85.2205 94.4353 85.2205 93.9408C85.2205 93.6073 85.3125 93.3083 85.4965 93.0438C85.6805 92.7793 85.922 92.5723 86.221 92.4228C86.52 92.2733 86.8305 92.1986 87.1525 92.1986C87.509 92.1986 87.831 92.2791 88.1185 92.4401C88.4175 92.6011 88.6533 92.8138 88.8258 93.0783C89.0098 93.3428 89.1018 93.6303 89.1018 93.9408C89.1018 94.2858 89.004 94.5906 88.8085 94.8551C88.6245 95.1196 88.383 95.3266 88.084 95.4761C87.7965 95.6256 87.486 95.7003 87.1525 95.7003ZM95.6053 91.2498V87.9551L92.1898 79.3818H95.8986L97.5718 84.6258L99.2106 79.3818H102.902L99.3141 87.9551V91.2498H95.6053Z"
+                                                fill="#232323" />
+                                        </svg>
+                                    </div>
+
+                                    <div class=" relative flex justify-between items-center px-4 w-full h-12">
+                                        <div class="relative w-[170px] h-[40px]">
+                                            <!-- Shadow Rectangle for detail button -->
+                                            <div class="absolute w-[150px] h-[40px] bg-black left-1 top-1 rounded-lg"
+                                                style="z-index: 2;"></div>
+
+                                            <!-- Main Rectangle for detail button -->
+                                            <div class=" absolute rectangle w-[150px] h-[40px] bg-yellow-400 text-black font-bold rounded-lg border-2 border-black text-sm pl-3 pt-1 leading-loose"
+                                                style="z-index: 3;">
+                                                Chi Tiet San Pham
+                                            </div>
+                                        </div>
+
+                                        <!-- Adjusted parent div for right-end alignment using flex and space-between -->
+                                        <div class="relative h-12 w-12 ">
+                                            <!-- Shadow Button: placed behind with a lower z-index -->
+                                            <div class="absolute bg-black rounded-full h-12 w-12 left-1 top-1 z-[1]">
+                                            </div>
+
+                                            <!-- Main Button: Visible and interactive -->
+                                            <button
+                                                class="relative bg-yellow-400 text-black font-bold rounded-full h-12 w-12 flex items-center justify-center shadow-lg focus:outline-none z-[2]">
+                                                +
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="w-full h-5 flex flex-col justify-center items-center pt-7">
+                                <p class="font-paytone font-bold text-xl">Yo! Soda Vị Nho </p>
+                                <p class="font-paytone font-bold text-xl">Lon Thap</p>
+                                <p class="font-paytone font-bold text-xl">15,000 VND</p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3 -->
+                        <div class="flex-none max-w-2xl mr-1 ml-3">
+                            <div class="relative mb-5">
+
+
+                                <!-- Main Rectangle -->
+                                <div
+                                    class="rectangle xl:min-w-[460px] xl:min-h-[600px] max-w-[325px] min-h-[450px] container bg-green-50 flex flex-col text-black text-xl font-bold rounded-standard border-2 border-black z-[2] shadow-br-black-sm">
+                                    <img src="../assets/cam.png" alt="Tai khoan va bao mat"
+                                        class="h-auto w-auto max-w-full max-h-full mx-auto my-4 xl:mt-28 xl:mb-24 mt-24 mb-16  " />
+
+                                    <div class=" relative flex justify-between items-center px-4 w-full h-12">
+                                        <div class="relative w-[170px] h-[40px]">
+                                            <!-- Shadow Rectangle for detail button -->
+                                            <div class="absolute w-[150px] h-[40px] bg-black left-1 top-1 rounded-lg"
+                                                style="z-index: 2;"></div>
+
+                                            <!-- Main Rectangle for detail button -->
+                                            <div class=" absolute rectangle w-[150px] h-[40px] bg-yellow-400 text-black font-bold rounded-lg border-2 border-black text-sm pl-3 pt-1 leading-loose"
+                                                style="z-index: 3;">
+                                                Chi Tiet San Pham
+                                            </div>
+                                        </div>
+
+                                        <!-- Adjusted parent div for right-end alignment using flex and space-between -->
+                                        <div class="relative h-12 w-12 ">
+                                            <!-- Shadow Button: placed behind with a lower z-index -->
+                                            <div class="absolute bg-black rounded-full h-12 w-12 left-1 top-1 z-[1]">
+                                            </div>
+
+                                            <!-- Main Button: Visible and interactive -->
+                                            <button
+                                                class="relative bg-yellow-400 text-black font-bold rounded-full h-12 w-12 flex items-center justify-center shadow-lg focus:outline-none z-[2]">
+                                                +
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="w-full h-5 flex flex-col justify-center items-center pt-7">
+                                <p class="font-paytone font-bold text-xl">Yo! Soda Vị Nho </p>
+                                <p class="font-paytone font-bold text-xl">Lon Thap</p>
+                                <p class="font-paytone font-bold text-xl">15,000 VND</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- footer responsive -->
+                <!-- footer -->
+                <footer class="bg-orange-300 mt-[12.8rem]">
+                    <div
+                        class="flex flex-col items-center space-y-40 py-12 xl:flex-row xl:justify-between xl:items-start xl:space-y-0 xl:px-60">
+                        <!-- logo -->
+                        <img src="../assets/images/logo.png" alt="logo" class="w-40 h-22">
+
+                        <!-- footer item -->
+                        <div class="text-center xl:text-start">
+                            <h2 class="text-2xl font-normal font-paytone mb-5">Giới thiệu</h2>
+                            <ul class="text-2xl font-bold font-comfortaa leading-10">
+                                <li>Về Yo!</li>
+                                <li>Sản phẩm</li>
+                                <li>Câu chuyện</li>
+                                <li>Các nhân vật</li>
+                                <li>Công thức</li>
+                            </ul>
+                        </div>
+
+                        <!-- footer item -->
+                        <div class="text-center xl:text-start">
+                            <h2 class="text-2xl font-normal font-paytone mb-5">Sản phẩm</h2>
+                            <ul class="text-2xl font-bold font-comfortaa leading-10">
+                                <li>Soda Yo!</li>
+                                <li>Kẹo Nổ Yo!</li>
+                                <li>Nho Nhộn Nhịp</li>
+                                <li>Cam Hớn Hở</li>
+                                <li>Ổi Thư Thái</li>
+                            </ul>
+                        </div>
+
+                        <!-- footer item -->
+                        <div class="text-center xl:text-start">
+                            <h2 class="text-2xl font-normal font-paytone mb-5">Điều khoản</h2>
+                            <div class="text-2xl font-bold font-comfortaa leading-10">
+                                <ul>
+                                    <li><a href="#">Điều khoản</a></li>
+                                    <li><a href="#">FAQ</a></li>
+                                    <li><a href="#">Đối tác</a></li>
+                                    <li><a href="#">Liên hệ</a></li>
+                                </ul>
+                                <p>Ch 35 sách vận chuy 35 54.5</p>
+                                <p>Chính sách bảo mật</p>
+                            </div>
+                        </div>
+
+                        <!-- social -->
+                        <div class="flex justify-center items-center space-x-4">
+                            <img src="../assets/images/social/facebook.svg" alt="facebook">
+                            <img src="../assets/images/social/instagram.svg" alt="instagram">
+                        </div>
+                    </div>
+                </footer>
+            </div>
+            <script src="../js/index.js"></script>
+            <script src="../js/dark-mode.js"></script>
+            <script src="../js/menu-toggle.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../js/config.js"></script>
+    <script>
+        tailwind.config = {
+            content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+            theme: {
+                container: {
+                    center: true,
+                    padding: '20px',
+                },
+                screens: {
+                    sm: '390px',
+                    md: '744px',
+                    lg: '1133px',
+                    xl: '1920px',
+                },
+                extend: {
+                    fontFamily: {
+                        comfortaa: 'Comfortaa, sans-serif',
+                        paytone: 'Paytone One, system-ui',
+                    },
+                    fontWeight: {
+                        thin: 100,
+                        extralight: 200,
+                        light: 300,
+                        normal: 400,
+                        medium: 500,
+                        semibold: 600,
+                        bold: 700,
+                        extrabold: 800,
+                        black: 900,
+                    },
+                    colors: {
+                        // primary day
+                        orange: {
+                            100: '#FFE0B7',
+                            200: '#FFD361',
+                            300: '#FFA800',
+                            400: '#FF862E',
+                        },
+                        //primary night
+                        purple: {
+                            100: '#EFDBFF',
+                            200: '#DEC7FF',
+                            300: '#A672CF',
+                            400: '#631B8F',
+                        },
+                        // secondary
+                        yellow: {
+                            100: '#FFF5C2',
+                            200: '#FFEE9B',
+                            300: '#FFE259',
+                            400: '#FFDA28',
+                        },
+                        // neutral
+                        neutral: {
+                            white: '#F5F5F5',
+                            gray100: '#B0B0B0',
+                            gray200: '#606060',
+                            black: '#1E1E1E',
+                        },
+                        //success
+                        green: {
+                            50: '#EBFFD4',
+                            100: '#DFFCF0',
+                            200: '#A0EACB',
+                            300: '#4BCE97',
+                            400: '#22A06B',
+                            500: '#00583D',
+                        },
+                        //error
+                        red: {
+                            100: '#FFEDEB',
+                            200: '#FFB6AD',
+                            300: '#F87462',
+                            400: '#E34935',
+                        },
+                        //warning
+                        warning: {
+                            100: '#FFF7D6',
+                            200: '#FAEDB9',
+                            300: '#F5CD47',
+                            400: '#E2B203',
+                        },
+                        border: {
+                            DEFAULT: '#232323',
+                        },
+                    },
+                    keyframes: {
+                        'accordion-down': {
+                            from: { height: '0' },
+                            to: { height: 'var(--radix-accordion-content-height)' },
+                        },
+                        'accordion-up': {
+                            from: { height: 'var(--radix-accordion-content-height)' },
+                            to: { height: '0' },
+                        },
+                    },
+                    animation: {
+                        'accordion-down': 'accordion-down 0.2s ease-out',
+                        'accordion-up': 'accordion-up 0.2s ease-out',
+                    },
+                    textStrokeWidth: {
+                        1: '1px',
+                        2: '2px',
+                    },
+                    textShadow: {
+                        DEFAULT: '4px 4px 0 #232323',
+                    },
+                    boxShadow: {
+                        button: '4px 4px 0px #232323',
+                        card: '8px 8px 0px 0px #000',
+                    },
+                },
+            },
+            plugins: [
+                plugin(function ({ matchUtilities, theme }) {
+                    matchUtilities(
+                        {
+                            'stroke-neutral-black': () => ({
+                                '-webkit-text-stroke-width': theme('textStrokeWidth.1'),
+                                '-webkit-text-stroke-color': '#232323',
+                            }),
+                            'stroke-black-2': () => ({
+                                '-webkit-text-stroke-width': theme('textStrokeWidth.2'),
+                                '-webkit-text-stroke-color': '#232323',
+                            }),
+                            title: (value) => ({
+                                textShadow: value,
+                                color: '#FFA800',
+                            }),
+                            slogan: (value) => ({
+                                textShadow: value,
+                                color: '#FFD361',
+                            }),
+                            combo: (value) => ({
+                                textShadow: value,
+                                color: '#FF862E',
+                            }),
+                        },
+                        {
+                            values: {
+                                ...theme('textStrokeWidth'),
+                                ...theme('textShadow'),
+                            },
+                        },
+                    );
+                }),
+            ],
+        }
+    </script>
+    <script>
+        function toggleMenu() {
+            document.getElementById("menu").classList.toggle("hidden");
+
+        }
+
+        function selectItem(element) {
+            // Remove 'selected' class from all p elements
+            document.querySelectorAll('.font-comfortaa p').forEach(p => {
+                p.classList.remove('selected');
+            });
+            // Add 'selected' class to the clicked element
+            element.classList.add('selected');
+        }
+    </script>
+
+    <style>
+        /* This style will apply to the selected item */
+        .selected {
+            color: black;
+            background-color: #DFFCF0;
+            /* Light yellow, change as needed */
+            border-color: black;
+            /* Green, matching your style */
+            border: 2px solid;
+            border-radius: 15px;
+        }
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Paytone+One&display=swap"
+        rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="container py-4 flex justify-between items-center">
+        <button>
+            <img loading="lazy" src="../assets/vector.svg" alt="vector menu" />
+        </button>
+
+        <div className="">
+            <img className="object-cover" src="../assets/images/logo.png" alt="logo" loading="lazy" width="120"
+                height="65" />
+        </div>
+
+        <button aria-label="Shopping bag" class="text-black">
+            <img loading="lazy" src="../assets/shopping-bag.svg" alt="shopping-bag" />
+        </button>
+    </header>
+    <div class="bg-orange-100">
+        <div
+            class="flex justify-around items-center bg-purple-100 rounded-xl border-2 border-[#232323] text-lg p-2 xl:p-5 mb-5 shadow-br-black-sm container max-w-[79rem]">
+            <span>Giỏ hàng</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+            </svg>
+            <span>Thông tin vận chuyển</span>
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+            </svg>
+            <div>
+                Thanh toán
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+            </svg>
+            <div class="bg-green-100 rounded-xl border-2 border-[#232323] text-red-400 px-2 xl:py-3">
+                <span>Theo dõi đơn hàng</span>
+            </div>
+        </div>
+        <div class=" pb-5 w-full flex justify-center items-center">
+            
+            <!-- Relative (statically positioned) text element with custom color and slight offset for shadow effect -->
+            <p class="text-[#f87462] text-3xl font-paytone " style="position: relative; left: 4px; top: 3px; text-shadow: 2px 5px 0 #232323; ">Theo dõi
+                đơn hàng</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-4 container max-w-[79rem]">
+            <div class="py-5">
+                <div class="pb-3">
+                    <div
+                        class="w-[302px] h-[38px] bg-yellow-400 flex justify-center items-center text-black text-xl font-bold rounded-standard border-2 border-black font-comfortaa shadow-br-black-sm">
+                        This is a rectangle
+                    </div>
+                </div>
+                <div class="text px-4 py-2">
+                    <div class="flex flex-row justify-between mb-2 font-comfortaa">
+                        <p class="font-semibold">Mã Đơn Hàng</p>
+                        <p>abdfadsf</p>
+                    </div>
+                    <div class="flex flex-row justify-between mb-2 font-comfortaa">
+                        <p class="font-semibold">Ngày giao dự kiến</p>
+                        <p>12/9/2023</p>
+                    </div>
+                    <div class="flex flex-row justify-between mb-2 font-comfortaa">
+                        <p class="font-semibold">Phương thức vận chuyển</p>
+                        <p>xe máy</p>
+                    </div>
+                    <div class="flex flex-row justify-between items-center mb-2 font-comfortaa">
+                        <p class="font-semibold">Trạng Thái Đơn Hàng</p>
+                        <div
+                            class="bg-yellow-400 flex justify-center items-center text-black p-8-custom rounded-standard border-2 border-black">
+                            Đang Giao
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="py-5">
+                <div class="pb-3">
+                    <div
+                        class="w-[302px] h-[38px] bg-yellow-400 flex justify-center items-center text-black text-xl font-bold rounded-standard border-2 border-black font-comfortaa shadow-br-black-sm">
+                        This is a rectangle
+                    </div>
+                </div>
+
+
+                <div id="text" class="px-4 py-2 ">
+                    <div class="flex flex-row justify-between mb-2 font-comfortaa">
+                        <p class="font-semibold">Mã Đơn Hàng</p>
+                        <p>abdfadsf</p>
+                    </div>
+
+                    <div class="flex flex-row justify-between mb-2 font-comfortaa">
+                        <p class="font-semibold">Ngày giao dự kiến</p>
+                        <p>12/9/2023</p>
+                    </div>
+
+                    <div class="flex flex-row justify-between mb-2 font-comfortaa">
+                        <p class="font-semibold">Phương thức vận chuyển</p>
+                        <p>xe máy</p>
+                    </div>
+
+                    <div class="flex flex-row justify-between items-center mb-2 font-comfortaa">
+                        <p class="font-semibold">Trạng Thái Đơn Hàng</p>
+                        <div
+                            class="bg-yellow-400 flex justify-center items-center text-black p-8-custom rounded-standard border-2 border-black">
+                            Đang Giao
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="py-5">
+                <div class="pb-3">
+                    <div
+                        class="w-[302px] h-[38px] bg-yellow-400 flex justify-center items-center text-black text-xl font-bold rounded-standard border-2 border-black font-comfortaa shadow-br-black-sm">
+                        This is a rectangle
+                    </div>
+                </div>
+                <div id="text" class="px-4 py-2 ">
+                    <div class="flex flex-row justify-between mb-2 font-comfortaa">
+                        <p class="font-semibold">Mã Đơn Hàng</p>
+                        <p>abdfadsf</p>
+                    </div>
+
+                    <div class="flex flex-row justify-between mb-2 font-comfortaa">
+                        <p class="font-semibold">Ngày giao dự kiến</p>
+                        <p>12/9/2023</p>
+                    </div>
+
+                    <div class="flex flex-row justify-between mb-2 font-comfortaa">
+                        <p class="font-semibold">Phương thức vận chuyển</p>
+                        <p>xe máy</p>
+                    </div>
+
+                    <div class="flex flex-row justify-between items-center mb-2 font-comfortaa">
+                        <p class="font-semibold">Trạng Thái Đơn Hàng</p>
+                        <div
+                            class="bg-yellow-400 flex justify-center items-center text-black p-8-custom rounded-standard border-2 border-black">
+                            Đang Giao
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="py-5">
+                <div class="pb-3">
+
+                    <div
+                        class="w-[302px] h-[38px] bg-yellow-400 flex justify-center items-center text-black text-xl font-bold rounded-standard border-2 border-black font-comfortaa shadow-br-black-sm">
+                        This is a rectangle
+                    </div>
+                </div>
+
+                <div id="text" class="px-4 py-2 ">
+                    <div class="flex flex-row justify-between mb-2 font-comfortaa">
+                        <p class="font-semibold">Mã Đơn Hàng</p>
+                        <p>abdfadsf</p>
+                    </div>
+
+                    <div class="flex flex-row justify-between mb-2 font-comfortaa">
+                        <p class="font-semibold">Ngày giao dự kiến</p>
+                        <p>12/9/2023</p>
+                    </div>
+
+                    <div class="flex flex-row justify-between mb-2 font-comfortaa">
+                        <p class="font-semibold">Phương thức vận chuyển</p>
+                        <p>xe máy</p>
+                    </div>
+
+                    <div class="flex flex-row justify-between items-center mb-2 font-comfortaa">
+                        <p class="font-semibold">Trạng Thái Đơn Hàng</p>
+                        <div
+                            class="bg-yellow-400 flex justify-center items-center text-black p-8-custom rounded-standard border-2 border-black">
+                            Đang Giao
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer responsive -->
+    <!-- footer -->
+    <footer class="bg-orange-300">
+        <div
+            class="flex flex-col items-center space-y-40 py-12 xl:flex-row xl:justify-between xl:items-start xl:space-y-0 xl:px-60">
+            <!-- logo -->
+            <img src="../assets/images/logo.png" alt="logo" class="w-40 h-22">
+
+            <!-- footer item -->
+            <div class="text-center xl:text-start">
+                <h2 class="text-2xl font-normal font-paytone mb-5">Giới thiệu</h2>
+                <ul class="text-2xl font-bold font-comfortaa leading-10">
+                    <li>Về Yo!</li>
+                    <li>Sản phẩm</li>
+                    <li>Câu chuyện</li>
+                    <li>Các nhân vật</li>
+                    <li>Công thức</li>
+                </ul>
+            </div>
+
+            <!-- footer item -->
+            <div class="text-center xl:text-start">
+                <h2 class="text-2xl font-normal font-paytone mb-5">Sản phẩm</h2>
+                <ul class="text-2xl font-bold font-comfortaa leading-10">
+                    <li>Soda Yo!</li>
+                    <li>Kẹo Nổ Yo!</li>
+                    <li>Nho Nhộn Nhịp</li>
+                    <li>Cam Hớn Hở</li>
+                    <li>Ổi Thư Thái</li>
+                </ul>
+            </div>
+
+            <!-- footer item -->
+            <div class="text-center xl:text-start">
+                <h2 class="text-2xl font-normal font-paytone mb-5">Điều khoản</h2>
+                <div class="text-2xl font-bold font-comfortaa leading-10">
+                    <ul>
+                        <li><a href="#">Điều khoản</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Đối tác</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                    </ul>
+                    <p>Ch 35 sách vận chuy 35 54.5</p>
+                    <p>Chính sách bảo mật</p>
+                </div>
+            </div>
+
+            <!-- social -->
+            <div class="flex justify-center items-center space-x-4">
+                <img src="../assets/images/social/facebook.svg" alt="facebook">
+                <img src="../assets/images/social/instagram.svg" alt="instagram">
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

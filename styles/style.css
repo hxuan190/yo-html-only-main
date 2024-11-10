@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.stroke-neutral-black {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #232323;
+}
+
+.stroke-neutral-black-2 {
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #232323;
+}
+
+.overflow-x-auto::-webkit-scrollbar {
+  display: none;
+}
+
+.overflow-x-auto {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.dark-mode {
+  background-color: var(--primary-purple-100);
+}
+
+/* carousel pagedone */
+.swiper-wrapper {
+  width: 100%;
+  height: max-content !important;
+  padding-bottom: 64px !important;
+  -webkit-transition-timing-function: linear !important;
+  transition-timing-function: linear !important;
+  position: relative;
+}
+
+.swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+  background: #232323 !important;
+}
+
+#cart-modal {
+  z-index: 100;
+}
+
+#cart-modal.hidden {
+  display: none;
+}

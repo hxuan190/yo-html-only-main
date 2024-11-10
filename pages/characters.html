@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <Title>Yo!</Title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Paytone+One&display=swap"
+        rel="stylesheet">
+    <script src="../js/config.js"></script>
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+
+<body class="bg-orange-100">
+    <div>
+        <!-- Header Alert -->
+        <div
+            class="bg-purple-400 w-full h-16 block md:flex justify-center items-center text-center px-9 py-1 md:py-2 md:p-0">
+            <div class="text-white font-comfortaa text-base leading-6 font-bold">Giảm giá thật nhiều, quẩy thật vui. <a
+                    class="hover:underline" href="./register.html">Đăng ký ngay</a>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <header
+            class="sm:container xl:max-w-none py-4 flex justify-between xl:justify-around items-center xl:bg-orange-300 xl:dark:bg-purple-300">
+            <div>
+                <div class="inline-block relative">
+                    <div class="flex space-x-4">
+                        <div class="relative">
+                            <button id="veYoButton"
+                                class="uppercase font-paytone font-normal leading-normal flex items-center text-[1.4375rem]">
+                                Về Yo!
+                                <svg id="veYoIcon" width="18" height="14" viewBox="0 0 18 14" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg" class="ml-1 transition-transform duration-300">
+                                    <path d="M9 13.5L0.339746 0.749998L17.6603 0.75L9 13.5Z" fill="#232323" />
+                                </svg>
+                            </button>
+                            <div id="veYoDropdown"
+                                class="absolute bg-yellow-400 w-56 rounded-standard border border-border shadow-br-black-lg hidden">
+                                <a href="#"
+                                    class="block text-border font-paytone text-[1.4375rem] font-normal uppercase px-5 py-2.5">Các
+                                    nhân
+                                    vật</a>
+                                <a href="#"
+                                    class="block text-border font-paytone text-[1.4375rem] font-normal uppercase px-5 py-2.5">Câu
+                                    chuyện</a>
+                                <a href="#"
+                                    class="block text-border font-paytone text-[1.4375rem] font-normal uppercase px-5 py-2.5">FAQ</a>
+                                <a href="#"
+                                    class="block text-border font-paytone text-[1.4375rem] font-normal uppercase px-5 py-2.5">Đối
+                                    tác</a>
+                                <a href="#"
+                                    class="block text-border font-paytone text-[1.4375rem] font-normal uppercase px-5 py-2.5">Liên
+                                    hệ</a>
+                            </div>
+                        </div>
+
+                        <div class="relative pl-12">
+                            <button id="sodaYoButton"
+                                class="uppercase font-paytone font-normal leading-normal flex items-center text-[1.4375rem]">
+                                Soda Yo!
+                                <svg id="sodaYoIcon" width="18" height="14" viewBox="0 0 18 14" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg" class="ml-1 transition-transform duration-300">
+                                    <path d="M9 13.5L0.339746 0.749998L17.6603 0.75L9 13.5Z" fill="#232323" />
+                                </svg>
+                            </button>
+                            <div id="sodaYoDropdown"
+                                class="absolute bg-yellow-400 w-56 rounded-standard border border-border shadow-br-black-lg hidden">
+                                <a href="../pages/product.html"
+                                    class="block text-border font-paytone text-[1.4375rem] font-normal uppercase px-5 py-2.5">Sản
+                                    phẩm</a>
+                                <a href="../pages/blog.html"
+                                    class="block text-border font-paytone text-[1.4375rem] font-normal uppercase px-5 py-2.5">Công
+                                    thức</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="./index.html" className="">
+                <img className="object-cover" src="../assets/images/logo.png" alt="logo" loading="lazy" width="120"
+                    height="65" />
+            </a>
+
+            <div class="flex space-x-5 items-center">
+                <img src="../assets/images/icon/search.png" alt="">
+                <img src="../assets/images/icon/user.png" alt="">
+                <img loading="lazy" src="../assets/shopping-bag.svg" alt="shopping-bag" />
+                <input type="checkbox" id="dark-mode-toggle" class="hidden">
+                <label for="dark-mode-toggle" class="cursor-pointer">
+                    <div
+                        class="w-12 h-7 bg-yellow-300 rounded-full flex items-center transition duration-300 ease-in-out dark:bg-purple-300 border-2 border-border">
+                        <div
+                            class="w-5 h-5 bg-white rounded-full shadow transform transition duration-300 ease-in-out translate-x-0 dark:translate-x-5 mx-1 my-12">
+                        </div>
+                    </div>
+                </label>
+            </div>
+        </header>
+
+        <main class="container max-h-full bg-orange-100 dark:bg-purple-100">
+            <section class="min-w-screen min-h-screen">
+                <h1 class="py-10 text-center text-orange-300 stroke-neutral-black text-5xl/normal xl:text-7xl/normal font-normal font-paytone" style="text-shadow: 4px 4px 0px #232323">Characters</h1>
+                 <div class="grid grid-cols-1 xl:grid-cols-3 gap-10">
+                    <div class="p-6">
+                        <a href="./character_orange_details.html" class="flex flex-col items-center">
+                            <img src="../assets/images/orange/orange-character.svg" alt="nhan-vat-cam" class="w-[20.4375rem] h-[21.375rem] xl:w-[28.5rem] xl:h-[28rem]">
+                            <p class="text-lg py-5 uppercase text-neutral-black xl:text-[2rem]/normal font-bold font-paytone">Cam Hớn Hở</p>
+                            <p class="capitalize font-comfortaa text-neutral-black text-base/6 xl:text-[1.4375rem]/[2.1875rem] font-light">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam et maiores laboriosam autem voluptas iste, expedita omnis aliquid culpa sequi odit ullam dolor. Rerum, quis unde voluptates corrupti fuga harum.
+                            </p>
+                        </a>
+                    </div>
+                    <div class="p-6">
+                        <a href="" class="flex flex-col items-center">
+                            <img src="../assets/images/purple/purple-character.svg" alt="nhan-vat-nho" class="w-[20.4375rem] h-[21.375rem] xl:w-[28.5rem] xl:h-[28rem]">
+                            <p class="text-lg py-5 uppercase text-neutral-black xl:text-[2rem]/normal font-bold font-paytone">Nho nhộn nhịp</p>
+                            <p class="capitalize font-comfortaa text-neutral-black text-base/6 xl:text-[1.4375rem]/[2.1875rem] font-light">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam et maiores laboriosam autem voluptas iste, expedita omnis aliquid culpa sequi odit ullam dolor. Rerum, quis unde voluptates corrupti fuga harum.
+                            </p>
+                        </a>
+                    </div>
+                    <div class="p-6">
+                        <a href="" class="flex flex-col items-center">
+                            <img src="../assets/images/green/green-character.svg" alt="nhan-vat-oi" class="w-[20.4375rem] h-[21.375rem] xl:w-[28.5rem] xl:h-[28rem]">
+                            <p class="text-lg py-5 uppercase text-neutral-black xl:text-[2rem]/normal font-bold font-paytone">Ổi thư thái</p>
+                            <p class="capitalize font-comfortaa text-neutral-black text-base/6 xl:text-[1.4375rem]/[2.1875rem] font-light">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam et maiores laboriosam autem voluptas iste, expedita omnis aliquid culpa sequi odit ullam dolor. Rerum, quis unde voluptates corrupti fuga harum.
+                            </p>
+                        </a>
+                    </div>
+                 </div>
+            </section>
+        </main>
+
+        <!-- footer -->
+        <footer class="bg-orange-300 xl:dark:bg-purple-200">
+            <div
+                class="flex flex-col items-center space-y-40 py-12 xl:flex-row xl:justify-between xl:items-start xl:space-y-0 xl:px-60">
+                <!-- logo -->
+                <img src="../assets/images/logo.png" alt="logo" class="w-40 h-22">
+
+                <!-- footer item -->
+                <div class="text-center xl:text-start">
+                    <h2 class="text-2xl font-normal font-paytone mb-5">Giới thiệu</h2>
+                    <ul class="text-2xl font-bold font-comfortaa leading-10">
+                        <li>Về Yo!</li>
+                        <li>Sản phẩm</li>
+                        <li>Câu chuyện</li>
+                        <li>Các nhân vật</li>
+                        <li>Công thức</li>
+                    </ul>
+                </div>
+
+                <!-- footer item -->
+                <div class="text-center xl:text-start">
+                    <h2 class="text-2xl font-normal font-paytone mb-5">Sản phẩm</h2>
+                    <ul class="text-2xl font-bold font-comfortaa leading-10">
+                        <li>Soda Yo!</li>
+                        <li>Kẹo Nổ Yo!</li>
+                        <li>Nho Nhộn Nhịp</li>
+                        <li>Cam Hớn Hở</li>
+                        <li>Ổi Thư Thái</li>
+                    </ul>
+                </div>
+
+                <!-- footer item -->
+                <div class="text-center xl:text-start">
+                    <h2 class="text-2xl font-normal font-paytone mb-5">Điều khoản</h2>
+                    <div class="text-2xl font-bold font-comfortaa leading-10">
+                        <ul>
+                            <li><a href="#">Điều khoản</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Đối tác</a></li>
+                            <li><a href="#">Liên hệ</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- social -->
+                <div class="flex justify-center items-center space-x-4">
+                    <img src="../assets/images/social/facebook.svg" alt="facebook">
+                    <img src="../assets/images/social/instagram.svg" alt="instagram">
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="../js/index.js"></script>
+    <script src="../js/dark-mode.js"></script>
+    <script src="../js/menu-toggle.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../assets/img/Logo 1.png  " type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Paytone+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>FAQ</title>
+    <link rel="stylesheet" href="../styles/style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/dark-mode.js"></script>
+  </head>
+  <body>
+    <div
+      id="cart-overlay"
+      class="hidden fixed top-0 left-0 w-full h-full bg-border bg-opacity-60 z-40"
+    ></div>
+
+    <header
+      class="sm:container xl:max-w-none py-4 flex justify-between xl:justify-around items-center xl:bg-orange-300 xl:dark:bg-purple-300"
+    >
+      <div class="hidden xl:block">
+        <div class="inline-block relative">
+          <div class="flex space-x-4">
+            <div class="relative">
+              <button
+                id="veYoButton"
+                class="uppercase font-paytone font-normal leading-normal flex items-center text-[1.4375rem]"
+              >
+                Về Yo!
+                <svg
+                  id="veYoIcon"
+                  width="18"
+                  height="14"
+                  viewBox="0 0 18 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="ml-1 transition-transform duration-300"
+                >
+                  <path
+                    d="M9 13.5L0.339746 0.749998L17.6603 0.75L9 13.5Z"
+                    fill="#232323"
+                  />
+                </svg>
+              </button>
+              <div
+                id="veYoDropdown"
+                class="absolute dropdown bg-yellow-400 w-56 rounded-standard border border-border shadow-br-black-lg hidden z-50"
+              >
+                <a
+                  href="./characters.html"
+                  class="block text-border font-paytone text-[1.4375rem] font-normal uppercase px-5 py-2.5"
+                  >Các nhân vật</a
+                >
+                <a
+                  href="#"
+                  class="block text-border font-paytone text-[1.4375rem] font-normal uppercase px-5 py-2.5"
+                  >Câu chuyện</a
+                >
+                <a
+                  href="./faq.html"
+                  class="block text-border font-paytone text-[1.4375rem] font-normal uppercase px-5 py-2.5"
+                  >FAQ</a
+                >
+                <a
+                  href="./partner.html"
+                  class="block text-border font-paytone text-[1.4375rem] font-normal uppercase px-5 py-2.5"
+                  >Đối tác</a
+                >
+                <a
+                  href="./contact.html"
+                  class="block text-border font-paytone text-[1.4375rem] font-normal uppercase px-5 py-2.5"
+                  >Liên hệ</a
+                >
+              </div>
+            </div>
+
+            <div class="relative pl-12">
+              <button
+                id="sodaYoButton"
+                class="uppercase font-paytone font-normal leading-normal flex items-center text-[1.4375rem]"
+              >
+                Soda Yo!
+                <svg
+                  id="sodaYoIcon"
+                  width="18"
+                  height="14"
+                  viewBox="0 0 18 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="ml-1 transition-transform duration-300"
+                >
+                  <path
+                    d="M9 13.5L0.339746 0.749998L17.6603 0.75L9 13.5Z"
+                    fill="#232323"
+                  />
+                </svg>
+              </button>
+              <div
+                id="sodaYoDropdown"
+                class="absolute dropdown bg-yellow-400 w-56 rounded-standard border border-border shadow-br-black-lg hidden z-50"
+              >
+                <a
+                  href="./product.html"
+                  class="block text-border font-paytone text-[1.4375rem] font-normal uppercase px-5 py-2.5"
+                  >Sản phẩm</a
+                >
+                <a
+                  href="./blog.html"
+                  class="block text-border font-paytone text-[1.4375rem] font-normal uppercase px-5 py-2.5"
+                  >Công thức</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="xl:hidden">
+        <button
+          type="button"
+          class="bg-neutral-white rounded-md p-2 inline-flex items-center justify-center"
+          aria-expanded="false"
+          id="mobile-menu-button"
+        >
+          <img loading="lazy" src="../assets/vector.svg" alt="vector menu" />
+        </button>
+      </div>
+      <div
+        id="mobile-menu"
+        class="xl:hidden absolute top-16 left-0 w-full bg-orange-200 shadow-lg z-50 hidden"
+      >
+        <div class="px-4 py-6 space-y-6">
+          <div class="relative">
+            <button
+              id="mobile-veYoButton"
+              class="uppercase font-paytone font-normal leading-normal flex items-center text-[1.4375rem] w-fit text-left bg-orange-300 p-2 rounded-standard"
+            >
+              Về Yo!
+              <svg
+                id="mobile-veYoIcon"
+                width="18"
+                height="14"
+                viewBox="0 0 18 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="ml-1 transition-transform duration-300"
+              >
+                <path
+                  d="M9 13.5L0.339746 0.749998L17.6603 0.75L9 13.5Z"
+                  fill="#232323"
+                />
+              </svg>
+            </button>
+            <div id="mobile-veYoDropdown" class="mt-3 space-y-3 hidden">
+              <a
+                href="#"
+                class="block text-border font-paytone text-[1.4375rem] font-normal uppercase px-5 py-2.5"
+                >Các nhân vật</a
+              >
+              <a
+                href="#"
+                class="block text-border font-paytone text-[1.4375rem] font-normal uppercase px-5 py-2.5"
+                >Câu chuyện</a
+              >
+              <a
+                href="#"
+                class="block text-border font-paytone text-[1.4375rem] font-normal uppercase px-5 py-2.5"
+                >FAQ</a
+              >
+              <a
+                href="#"
+                class="block text-border font-paytone text-[1.4375rem] font-normal uppercase px-5 py-2.5"
+                >Đối tác</a
+              >
+              <a
+                href="#"
+                class="block text-border font-paytone text-[1.4375rem] font-normal uppercase px-5 py-2.5"
+                >Liên hệ</a
+              >
+            </div>
+          </div>
+          <div class="relative">
+            <button
+              id="mobile-sodaYoButton"
+              class="uppercase font-paytone font-normal leading-normal flex items-center text-[1.4375rem] text-left bg-orange-300 p-2 rounded-standard"
+            >
+              Soda Yo!
+              <svg
+                id="mobile-sodaYoIcon"
+                width="18"
+                height="14"
+                viewBox="0 0 18 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="ml-1 transition-transform duration-300"
+              >
+                <path
+                  d="M9 13.5L0.339746 0.749998L17.6603 0.75L9 13.5Z"
+                  fill="#232323"
+                />
+              </svg>
+            </button>
+            <div id="mobile-sodaYoDropdown" class="mt-3 space-y-3 hidden">
+              <a
+                href="../pages/product.html"
+                class="block text-border font-paytone text-[1.4375rem] font-normal uppercase px-5 py-2.5"
+                >Sản phẩm</a
+              >
+              <a
+                href="../pages/blog.html"
+                class="block text-border font-paytone text-[1.4375rem] font-normal uppercase px-5 py-2.5"
+                >Công thức</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#" className="">
+        <img
+          className="object-cover"
+          src="../assets/images/logo.png"
+          alt="logo"
+          loading="lazy"
+          width="120"
+          height="65"
+        />
+      </a>
+
+      <div class="flex space-x-5 items-center">
+        <img
+          src="../assets/images/icon/search.png"
+          alt=""
+          class="hidden xl:inline"
+        />
+        <a href="./account_information.html">
+          <img
+            src="../assets/images/icon/user.png"
+            alt=""
+            class="hidden xl:inline"
+          />
+        </a>
+
+        <button id="cart-button">
+          <img
+            loading="lazy"
+            src="../assets/shopping-bag.svg"
+            alt="shopping-bag"
+          />
+        </button>
+
+        <div
+          id="cart-modal"
+          class="hidden fixed z-50 gap-4 p-6 shadow-lg transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-500 inset-y-0 right-0 h-full w-3/4 border-l data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-sm dark:bg-purple-100 bg-orange-100 xl:h-screen flex flex-col justify-between"
+        >
+          <div class="flex flex-col">
+            <div class="flex justify-between">
+              <h2
+                class="text-orange-300 uppercase text-4xl/normal font-bold font-paytone"
+                style="text-shadow: 4px 4px 0 #232323"
+              >
+                Giỏ hàng
+              </h2>
+              <button class="font-paytone -translate-y-6" id="close-cart-modal">
+                x
+              </button>
+            </div>
+            <div class="flex xl:gap-5 gap-3 mt-5">
+              <img
+                src="../assets/images/orange/orange-low.png"
+                alt=""
+                class="w-[6rem] h-[9rem] p-0.5 xl:w-[10rem] xl:h-[14rem] bg-orange-200 xl:px-[1.5rem] xl:py-[1rem] border-[0.125rem] border-solid border-neutral-black rounded-[0.9375rem] shadow-button object-contain shadow-br-black-md"
+              />
+              <div class="flex flex-col">
+                <p
+                  class="uppercase text-neutral-black text-xl/normal xl:text-[1.875rem]/normal font-normal font-paytone"
+                >
+                  Soda Yo! <span>Vị Cam</span>
+                </p>
+                <p
+                  class="xl:pt-2 uppercase text-neutral-black text-xl/normal xl:text-[1.4375rem]/normal font-paytone"
+                >
+                  15,000 đ
+                </p>
+                <div class="flex flex-row justify-between items-center">
+                  <button
+                    class="flex items-center justify-between rounded-[0.9375rem] border-[0.125rem] border-neutral-black border-solid px-5 py-[0.625rem] uppercase text-[1.4375rem]/normal font-normal placeholder:text-neutral-black focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1 xl:hover:shadow-[inset_0_0_6px_rgba(0,0,0,0.3)] transition-shadow duration-500 shadow-br-black-md my-1 xl:my-3 w-[5rem] h-[2.5rem] xl:w-[6rem] xl:h-[3rem] bg-white"
+                  >
+                    <span style="pointer-events: none">1</span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-chevron-down h-6 w-6"
+                      aria-hidden="true"
+                    >
+                      <path d="m6 9 6 6 6-6"></path>
+                    </svg>
+                  </button>
+                  <button
+                    class="ease-in-out xl:hover:shadow-[inset_0_0_6px_rgba(0,0,0,0.3)] xl:hover:transition-shadow xl:hover:duration-5000 inline-flex items-center justify-center whitespace-nowrap rounded-[0.9375rem] text-sm font-medium transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 text-primary-foreground hover:bg-primary/90 bg-neutral-white ml-2 p-[0.375rem] border-2 border-solid border-neutral-black shadow-br-black-md"
+                  >
+                    <img
+                      src="../assets/images/trash.svg"
+                      alt=""
+                      class="w-6 h-6 xl:w-8 xl:h-8 cursor-pointer"
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col h-fit">
+            <div>
+              <p
+                class="text-neutral-black font-normal text-xl/normal xl:text-[1.875rem]/normal uppercase font-paytone"
+              >
+                Tổng cộng
+              </p>
+              <p
+                class="text-neutral-black font-normal text-[1.5rem]/normal xl:text-[2.5rem]/normal uppercase font-paytone"
+              >
+                30,000 đ
+              </p>
+              <button
+                class="text-border bg-neutral-white text-2xl font-paytone uppercase font-normal leading-normal border-2 border-border rounded-[0.9375rem] py-1 shadow-br-black-md hover:transition hover:duration-1000 hover:ease-in-out hover:shadow-inner-black-sm w-full"
+              >
+                tiếp tục mua sắm
+              </button>
+              <p
+                class="my-5 font-comfortaa text-base/[1.5625rem] font-bold mt-4"
+              >
+                Tiền vận chuyển sẽ được tính trong quá trình thanh toán
+              </p>
+              <button
+                class="text-border bg-yellow-400 text-2xl font-paytone uppercase font-normal leading-normal border-2 border-border rounded-[0.9375rem] py-1 shadow-br-black-md hover:transition hover:duration-1000 hover:ease-in-out hover:shadow-inner-black-sm w-full"
+              >
+                Thanh toán
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <input type="checkbox" id="dark-mode-toggle" class="hidden" />
+        <label for="dark-mode-toggle" class="cursor-pointer hidden xl:inline">
+          <div
+            class="w-12 h-7 bg-yellow-300 rounded-full flex items-center transition duration-300 ease-in-out dark:bg-purple-300 border-2 border-border"
+          >
+            <div
+              class="w-5 h-5 bg-white rounded-full shadow transform transition duration-300 ease-in-out translate-x-0 dark:translate-x-5 mx-1 my-12"
+            ></div>
+          </div>
+        </label>
+      </div>
+    </header>
+    <div
+      class="flex flex-col xl:flex-row justify-start xl:justify-around items-center xl:items-start bg-orange-100 text-lg xl:pb-0 relative z-10"
+    >
+      <div
+        class="absolute xl:relative h-auto xl:flex xl:flex-col xl:items-center xl:mt-[6rem] xl:ml-[15rem] xl:mb-[13.25rem] mt-10 z-30 px-4"
+      >
+        <div class="relative mb-[3.125rem]">
+          <span
+            class="absolute font-paytone left-1 top-1 text-[4.68519rem] font-normal text-neutral-black2"
+          >
+            FAQ
+          </span>
+          <span
+            class="relative font-paytone text-[4.68519rem] font-normal text-orange-300"
+          >
+            FAQ
+          </span>
+        </div>
+        <div>
+          <div
+            class="xl:w-[52.3125rem] w-full break-words xl:h-[5.19rem] bg-yellow-200 rounded-[0.93519rem] border-2 border-border shadow-br-black-md p-2 text-base font-light font-comfortaa outline-none flex items-center justify-between gap-1"
+          >
+            <p
+              class="text-neutral-black2 font-comfortaa xl:text-[1.4375rem] text-base font-bold leading-[1.875rem]"
+            >
+              Tôi có thể uống mỗi ngày không?
+            </p>
+            <button onclick="toggleAnswer('answer1', 'icon1')" id="bankButton1">
+              <svg
+                id="icon1"
+                width="65"
+                height="65"
+                class="xl:w-[4.063rem] xl:h-[4.063rem] w-[2rem] h-[2rem]"
+                viewBox="0 0 32 33"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="15"
+                  cy="15.5"
+                  r="14.5"
+                  fill="#FFDA28"
+                  stroke="#232323"
+                />
+                <path
+                  id="plusPath"
+                  d="M13.3125 20V16.5469H10V13.4531H13.3125V10H16.6875V13.4531H20V16.5469H16.6875V20H13.3125Z"
+                  fill="#232323"
+                  class="transition-transform duration-300 ease transform origin-center"
+                />
+              </svg>
+            </button>
+          </div>
+          <div
+            id="answer1"
+            class="xl:w-[52.3125rem] w-full mt-1 bg-yellow-100 rounded-[0.93519rem] border-2 border-border shadow-br-black-md p-2 text-base font-light font-comfortaa outline-none max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-in-out"
+          >
+            <p
+              class="text-neutral-black2 font-comfortaa xl:text-[1.4375rem] text-base font-light leading-[1.875rem]"
+            >
+              Soda chứa nhiều calo và đường, vì vậy uống quá nhiều không phải là
+              lựa chọn tốt khi bạn đang ăn kiêng. Để đạt được những lợi ích của
+              Soda mà không tiêu thụ quá nhiều calo, bạn chỉ nên uống dưới 240ml
+              mỗi ngày.
+            </p>
+          </div>
+        </div>
+        <div>
+          <div
+            class="xl:w-[52.3125rem] w-full break-words xl:h-[5.19rem] bg-yellow-200 rounded-[0.93519rem] border-2 border-border shadow-br-black-md p-2 text-base font-light font-comfortaa outline-none flex items-center justify-between gap-1"
+          >
+            <p
+              class="text-neutral-black2 font-comfortaa xl:text-[1.4375rem] text-base font-bold leading-[1.875rem]"
+            >
+              Tôi có được miễn phí ship không?
+            </p>
+            <button onclick="toggleAnswer('answer2', 'icon2')" id="bankButton2">
+              <svg
+                id="icon2"
+                width="65"
+                height="65"
+                class="xl:w-[4.063rem] xl:h-[4.063rem] w-[2rem] h-[2rem]"
+                viewBox="0 0 32 33"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="15"
+                  cy="15.5"
+                  r="14.5"
+                  fill="#FFDA28"
+                  stroke="#232323"
+                />
+                <path
+                  id="plusPath"
+                  d="M13.3125 20V16.5469H10V13.4531H13.3125V10H16.6875V13.4531H20V16.5469H16.6875V20H13.3125Z"
+                  fill="#232323"
+                  class="transition-transform duration-300 ease transform origin-center"
+                />
+              </svg>
+            </button>
+          </div>
+          <div
+            id="answer2"
+            class="xl:w-[52.3125rem] w-full mt-1 bg-yellow-100 rounded-[0.93519rem] border-2 border-border shadow-br-black-md p-2 text-base font-light font-comfortaa outline-none max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-in-out"
+          >
+            <p
+              class="text-neutral-black2 font-comfortaa xl:text-[1.4375rem] text-base font-light leading-[1.875rem]"
+            >
+              Yo! vận chuyển đơn hàng đến người tiêu dùng thông qua các đối tác
+              vận chuyển do đó chi phí ship phụ thuộc vào chi phí của bên vận
+              chuyển.
+            </p>
+          </div>
+        </div>
+        <div>
+          <div
+            class="xl:w-[52.3125rem] w-full break-words xl:h-[5.19rem] bg-yellow-200 rounded-[0.93519rem] border-2 border-border shadow-br-black-md p-2 text-base font-light font-comfortaa outline-none flex items-center justify-between gap-1"
+          >
+            <p
+              class="text-neutral-black2 font-comfortaa xl:text-[1.4375rem] text-base font-bold leading-[1.875rem]"
+            >
+              Tôi có thể xem đơn hàng của mình ở đâu?
+            </p>
+            <button onclick="toggleAnswer('answer3', 'icon3')" id="bankButton3">
+              <svg
+                id="icon3"
+                width="65"
+                height="65"
+                class="xl:w-[4.063rem] xl:h-[4.063rem] w-[2rem] h-[2rem]"
+                viewBox="0 0 32 33"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="15"
+                  cy="15.5"
+                  r="14.5"
+                  fill="#FFDA28"
+                  stroke="#232323"
+                />
+                <path
+                  id="plusPath"
+                  d="M13.3125 20V16.5469H10V13.4531H13.3125V10H16.6875V13.4531H20V16.5469H16.6875V20H13.3125Z"
+                  fill="#232323"
+                  class="transition-transform duration-300 ease transform origin-center"
+                />
+              </svg>
+            </button>
+          </div>
+          <div
+            id="answer3"
+            class="xl:w-[52.3125rem] w-full mt-1 bg-yellow-100 rounded-[0.93519rem] border-2 border-border shadow-br-black-md p-2 text-base font-light font-comfortaa outline-none max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-in-out"
+          >
+            <p
+              class="text-neutral-black2 font-comfortaa xl:text-[1.4375rem] text-base font-light leading-[1.875rem]"
+            >
+              Nếu bạn đã đăng nhập để mua hàng, bấm vào icon tài khoẻn. Sau đó
+              bấm vào “Trang theo dõi đơn hàng để kiểm tra tình trạng đơn hàng
+              của bạn.
+            </p>
+          </div>
+        </div>
+        <div>
+          <div
+            class="xl:w-[52.3125rem] w-full break-words xl:h-[5.19rem] bg-yellow-200 rounded-[0.93519rem] border-2 border-border shadow-br-black-md p-2 text-base font-light font-comfortaa outline-none flex items-center justify-between gap-1"
+          >
+            <p
+              class="text-neutral-black2 font-comfortaa xl:text-[1.4375rem] text-base font-bold leading-[1.875rem]"
+            >
+              Tôi có thể huỷ đơn hàng của mình không?
+            </p>
+            <button onclick="toggleAnswer('answer4', 'icon4')" id="bankButton4">
+              <svg
+                id="icon4"
+                width="65"
+                height="65"
+                class="xl:w-[4.063rem] xl:h-[4.063rem] w-[2rem] h-[2rem]"
+                viewBox="0 0 32 33"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="15"
+                  cy="15.5"
+                  r="14.5"
+                  fill="#FFDA28"
+                  stroke="#232323"
+                />
+                <path
+                  id="plusPath"
+                  d="M13.3125 20V16.5469H10V13.4531H13.3125V10H16.6875V13.4531H20V16.5469H16.6875V20H13.3125Z"
+                  fill="#232323"
+                  class="transition-transform duration-300 ease transform origin-center"
+                />
+              </svg>
+            </button>
+          </div>
+          <div
+            id="answer4"
+            class="xl:w-[52.3125rem] w-full mt-1 bg-yellow-100 rounded-[0.93519rem] border-2 border-border shadow-br-black-md p-2 text-base font-light font-comfortaa outline-none max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-in-out"
+          >
+            <p
+              class="text-neutral-black2 font-comfortaa xl:text-[1.4375rem] text-base font-light leading-[1.875rem]"
+            >
+              Bạn hoàn toàn có thế huỷ giao dịch nếu tình trạng của đơn hàng là
+              “Đang chờ xác nhận”
+            </p>
+          </div>
+        </div>
+        <div>
+          <div
+            class="xl:w-[52.3125rem] w-full break-words xl:h-[5.19rem] bg-yellow-200 rounded-[0.93519rem] border-2 border-border shadow-br-black-md p-2 text-base font-light font-comfortaa outline-none flex items-center justify-between gap-1"
+          >
+            <p
+              class="text-neutral-black2 font-comfortaa xl:text-[1.4375rem] text-base font-bold leading-[1.875rem]"
+            >
+              Tôi có thể đặt giao hàng ở tỉnh không? Trong bao lâu?
+            </p>
+            <button onclick="toggleAnswer('answer5', 'icon5')" id="bankButton5">
+              <svg
+                id="icon5"
+                width="65"
+                height="65"
+                class="xl:w-[4.063rem] xl:h-[4.063rem] w-[2rem] h-[2rem]"
+                viewBox="0 0 32 33"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="15"
+                  cy="15.5"
+                  r="14.5"
+                  fill="#FFDA28"
+                  stroke="#232323"
+                />
+                <path
+                  id="plusPath"
+                  d="M13.3125 20V16.5469H10V13.4531H13.3125V10H16.6875V13.4531H20V16.5469H16.6875V20H13.3125Z"
+                  fill="#232323"
+                  class="transition-transform duration-300 ease transform origin-center"
+                />
+              </svg>
+            </button>
+          </div>
+          <div
+            id="answer5"
+            class="xl:w-[52.3125rem] w-full mt-1 bg-yellow-100 rounded-[0.93519rem] border-2 border-border shadow-br-black-md p-2 text-base font-light font-comfortaa outline-none max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-in-out"
+          >
+            <p
+              class="text-neutral-black2 font-comfortaa xl:text-[1.4375rem] text-base font-light leading-[1.875rem]"
+            >
+              Bạn có thể đặt hàng giao đến tỉnh và thời gian nhận hàng sẽ tùy
+              thuộc vào đơn vị vận chuyển.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <img
+        src="../assets/img/fruit-img.png"
+        alt=""
+        class="relative xl:-mb-[100px] xl:w-[34.3125rem] xl:top-[3.875rem] top-[6.5rem] xl:right-[7.93519rem] object-right object-cover z-20"
+      />
+    </div>
+    <footer class="bg-orange-300 relative z-50">
+      <div
+        class="flex flex-col items-center space-y-40 py-12 xl:flex-row xl:justify-between xl:items-start xl:space-y-0 xl:px-60"
+      >
+        <!-- logo -->
+        <img src="../assets/images/logo.png" alt="logo" class="w-40 h-22" />
+
+        <!-- footer item -->
+        <div class="text-center xl:text-start">
+          <h2 class="text-2xl font-normal font-paytone mb-5">Giới thiệu</h2>
+          <ul class="text-2xl font-bold font-comfortaa leading-10">
+            <li>Về Yo!</li>
+            <li>Sản phẩm</li>
+            <li>Câu chuyện</li>
+            <li>Các nhân vật</li>
+            <li>Công thức</li>
+          </ul>
+        </div>
+
+        <!-- footer item -->
+        <div class="text-center xl:text-start">
+          <h2 class="text-2xl font-normal font-paytone mb-5">Sản phẩm</h2>
+          <ul class="text-2xl font-bold font-comfortaa leading-10">
+            <li>Soda Yo!</li>
+            <li>Kẹo Nổ Yo!</li>
+            <li>Nho Nhộn Nhịp</li>
+            <li>Cam Hớn Hở</li>
+            <li>Ổi Thư Thái</li>
+          </ul>
+        </div>
+
+        <!-- footer item -->
+        <div class="text-center xl:text-start">
+          <h2 class="text-2xl font-normal font-paytone mb-5">Điều khoản</h2>
+          <div class="text-2xl font-bold font-comfortaa leading-10">
+            <ul>
+              <li><a href="#">Điều khoản</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Đối tác</a></li>
+              <li><a href="#">Liên hệ</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- social -->
+        <div class="flex justify-center items-center space-x-4">
+          <img src="../assets/images/social/facebook.svg" alt="facebook" />
+          <img src="../assets/images/social/instagram.svg" alt="instagram" />
+        </div>
+      </div>
+    </footer>
+    <script src="../js/toggle-faq.js"></script>
+    <script src="../js/menu-toggle.js"></script>
+  </body>
+</html>
